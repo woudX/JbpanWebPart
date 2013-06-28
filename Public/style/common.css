@@ -1,0 +1,281 @@
+﻿body {
+    background: url("/Public/image/bg.png");
+    padding: 0;
+    margin: 0;
+    font-family: "微软雅黑";
+}
+
+td{
+word-break:keep-all;
+ white-space:nowrap;
+ overflow:hidden;
+ text-overflow:ellipsis;
+
+}
+
+
+img{ 
+  max-width: 880px; 
+  height:auto; 
+  width:expression(this.width > 880 ? "880px" : this.width); 
+}
+
+#box {
+    width: 100%;
+}
+
+#box #box_inside {
+    width: 900px;
+    margin: 0 auto;
+    min-height: 350px;
+}
+
+#main_head {
+    font-size: 14px;
+    margin: 20px 0px;
+    background: rgba(103, 64, 121, 0.07);
+    padding: 5px 10px;
+}
+
+#main_head h1 {
+    margin-top: 0px;
+    padding-top: 10px;
+    text-align: center;
+}
+
+#sen_head {
+    border-bottom: 1px solid #cccccc;
+}
+
+#sen_head h3 {
+    text-align: center;
+}
+
+#sen_head div {
+    width: 900px;
+    margin: 0 auto 10px auto;
+    text-align: right;
+    font-size: 20px;
+}
+
+#sen_head div label {
+    font-size: 25px;
+    margin-right: 10px;
+    color: #666666;
+}
+
+#sen_head div input[type=text] {
+    font-size: 20px;
+    padding-left: 5px;
+    margin-right: 10px;
+    color: #6b0a0d;
+}
+
+#sen_head div input[type=submit] {
+    font-size: 20px;
+}
+
+#sen_head .nav {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+#sen_head .nav li {
+    float: left;
+    margin-right: 20px;
+
+}
+
+#submit_link {
+    text-align: right;
+}
+
+#submit_link a {
+    color: black;
+}
+
+#submit_link a:hover {
+    color: red;
+}
+
+#pick_box {
+    padding-top: 80px;
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 200px;
+}
+
+#pick_box #extract_label {
+    padding-right: 20px;
+    color: #666666;
+    margin-top: -5px;
+}
+#pick_box #extract_code {
+    width: 400px;
+    height: 30px;
+    font-size: 23px;
+    margin-right: 20px;
+    padding-left: 5px;;
+    font-family: "微软雅黑";
+    color: #6b0a0d;
+}
+#pick_box #extract_submit {
+    height: 40px;
+    font-size: 23px;
+    color: #666666;
+    font-family: "微软雅黑";
+}
+
+#footer {
+    margin-top: 10px;
+    border-top: 1px solid #cccccc;
+    padding: 20px 0;
+}
+
+#lean_overlay {
+    position: fixed;
+    z-index:100;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    background: #000;
+    display: none;
+}
+
+#download_dialog {
+    width: 700px;
+    display: none;
+    background: #ffffff;
+    border: 3px solid #000000;
+    min-height: 200px;
+}
+
+#download_dialog h3 {
+    background: #cccccc;
+    margin: 0;
+    padding: 10px 5px;
+}
+
+#download_dialog ul {
+    list-style: none;
+    margin: 0;
+    padding: 10px 0px;
+}
+
+#download_dialog ul li {
+    height: 30px;
+    padding: 0 20px;
+    font-size: 12px;
+    line-height: 30px;
+}
+
+#download_dialog ul li:hover {
+    background: #a6cccc;
+}
+
+#download_dialog ul li a.filename {
+    display: block;
+    float: left;
+    width: 570px;
+    color: black;
+    margin-right: 20px;
+    text-decoration: none;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    overflow:hidden;
+    -webkit-text-overflow:ellipsis;
+}
+
+#download_dialog ul li a.filename:hover {
+    color: red;
+}
+
+#download_dialog ul li a.filesize {
+    margin-left: 20px;
+    color: #333333;
+}
+
+#download_dialog .loading img {
+    display: block;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+#foot_banquan{
+    float:right;
+    font-size:8px;
+    text-align:right;
+}
+
+.no
+{
+    font-size: 28px;
+    color: red;
+}
+#tell{
+    font-size: 18px;
+    color: rgb(21, 45, 223);
+}
+#index_title{
+    font-size: 35px;
+    text-align: center;
+}
+
+.torrent_upload_form {
+    display: none;
+    width: 200px;
+}
+
+.torrent_upload_form > div {
+    position: relative;
+}
+
+.torrent_upload_form .upload_img {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 30px;
+}
+
+.torrent_upload_form input[type=file] {
+    width: 85px;
+    height: 30px;
+    position: absolute;
+    opacity: 0;
+}
+
+.torrent_upload_form .mask_left {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: url('/Public/image/bg.jpg');
+}
+
+.torrent_upload_form .mask_right {
+    position: absolute;
+    left:60px;
+    width: 33px;
+    height: 30px;
+    background: url('/Public/image/bg.jpg');
+}
+
+.torrent_upload_form .upload_tips {
+    position: absolute;
+    left: 70px;
+    line-height: 30px;
+    font-weight: bold;
+    color: red;
+    display: none;
+}
+
+.torrent_upload_form .upload_mask {
+    position: absolute;
+    left: 0px;
+    height: 30px;
+    width: 200px;
+    background: #333333;
+    opacity: 0;
+    display: none;
+}

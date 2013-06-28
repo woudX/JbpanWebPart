@@ -1,0 +1,148 @@
+@import "searchbar_global.css";
+
+#reg_box {
+    position: absolute;
+    top: 35px;
+    left: 0px;
+    bottom: 35px;
+    right: 0px;
+    background: rgba(0,0,0,0.6);
+}
+
+#reg_area {
+    position: absolute;
+    top: 0px;
+    left: 10%;
+    width: 80%;
+    height: 100%;
+    background: rgba(200,200,200,0.7);
+    overflow: hidden;
+}
+
+#info_area {
+    position: absolute;
+    top: 5%;
+    left: 3%;
+    width: 50%;
+    height: 90%;
+}
+
+/* 注册页面标题 */
+
+#reg_title {
+    padding: 5px 0px;
+}
+
+#title_big {
+    font-size: 2.5em;
+    color: #3a3a3a;
+    font-weight: bold;
+}
+
+#title_big > span {
+    padding-left: 10px;
+    font-size: 0.6em;
+    color: #5a5a5a;
+    font-weight: normal;
+}
+
+#title_small {
+    padding-top: 5px;
+    border-top: 1px solid rgba(0,0,0,0.3);
+}
+
+#title_small > span {
+    color: #2a2a2a;
+    font-size: 0.8em;
+}
+
+/* 提交表格 */
+#reg_info_form {
+    position: absolute;
+    top: 90px;
+    left: 30px;
+}
+
+#reg_info_ul,#reg_info_ul_title {
+    position: absolute;
+    top: 1px;
+    left: 80px;
+}
+
+#reg_info_ul_title {
+    left: 0px;
+    width: 70px;
+}
+
+#reg_info_ul_title li {
+    font-size: 1.05em;
+    height: 25px;
+    width: 70px;
+    vertical-align: middle;
+    text-align: center;
+    padding: 1px 0px;
+    color: #2a2a2a;
+}
+
+#reg_info_ul li,#reg_info_ul_title li {
+    margin: 20px 0px;
+}
+
+#reg_info_ul input {
+    border: 1px solid #7a7a7a;
+    border-radius: 3px;
+    width: 180px;
+    height: 25px;
+    font-size: 0.95em;
+    padding: 0px 5px;
+}
+
+#reg_info_ul input:hover {
+    box-shadow: 0px 0px 5px #1813ce;
+}
+
+#reg_agreeinfo {
+    position: absolute;
+    left: 10px;
+    top: 200px;
+    width: 200px;
+}
+
+#reg_agreeinfo > span {
+    font-size: 0.95em;
+    color: #FF3366;
+}
+
+#reg_agreeinfo_box {
+    margin: 5px 0px;
+    padding: 5px 3px;
+    border: 2px solid #1a1a1a;
+    width: 350px;
+    height: 100px;
+    word-wrap: break-word;
+    word-break: normal;
+    overflow-y: scroll;
+    color: #2a2a2a;
+    font-size: 0.8em;
+}
+
+#reg_submit_btn {
+    position: absolute;
+    left: 10px;
+    top: 360px;
+    width: 90px;
+    height: 35px;
+    font-size: 1.05em;
+
+    background-color: rgba(0,0,0,0.7);
+    color: #d6d6d6;
+    border: 1px solid #7a7a7a;
+    box-shadow: 0px 0px 2px rgba(0,0,0,0.6);
+}
+
+#reg_submit_btn:hover {
+    cursor: pointer;
+    color: #f6f6f6;
+    background: rgba(0,0,0,0.9);
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.8);
+}

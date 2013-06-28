@@ -1,0 +1,74 @@
+/* footer信息 */
+
+footer {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+}
+
+#hp_foot  {
+    height: 35px;
+    background-color: rgb(51,51,51);
+    z-index:9;
+    width: 100%;
+    position: relative;
+    border: 0px none;
+    padding: 0px;
+}
+
+#hp_btn_div {
+    position: relative;
+    height: 40px;
+}
+
+#bg_btn {
+    position: absolute;
+    right: 80px;
+    top: 5px;
+;
+}
+
+#bg_btn li {
+    display: inline;
+    margin: 0px 10px
+}
+
+#hp_info_div {
+    height: 100px;
+    background-color: rgba(0,0,0,0.6);
+    border-bottom: 1px solid #3a3a3a;
+}
+
+#hp_foot {
+    color: #fff;
+}
+
+#hp_foot_hdu {
+    position: absolute;
+    top: 6px;
+    right: 15px;
+    color: #b4b4b4;
+}
+
+#hp_foot_hdu li{
+    display: inline;
+    padding: 0px 14px;
+}
+
+#hp_foot_hdu li a {
+    color: #b4b4b4;
+}
+
+#hp_foot_hdu li a:hover {
+    color: #fff;
+}
+
+.foot_hdu_info {
+    font-family: "楷体";
+    color: #b4b4b4;
+}
+
+#foot_hdu_spl {
+    color: #fff;
+}

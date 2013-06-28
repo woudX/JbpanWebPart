@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    font-family: microsoft YaHei UI;
+}
+/* remember to define focus styles! */
+:focus
+{
+    outline: 0;
+}
+/* remember to highlight inserts somehow! */
+ins
+{
+    text-decoration: none;
+}
+del
+{
+    text-decoration: line-through;
+}
+/* tables still need 'cellspacing="0"' in the markup */
+table
+{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/* end eric meyer css reset */
+a {
+    color: #f06693;
+    text-decoration: none;
+}
+a:active, a:hover {
+    color: #f18740;
+    text-decoration: none;
+}
+::-webkit-scrollbar {
+width: 8px;
+height: 8px;
+}
+::-webkit-scrollbar-thumb {
+height: 50px;
+background-color: #999;
+border-radius: 4px;
+outline-offset: -2px;
+}
+::-webkit-scrollbar-track-piece {
+background-color: #f4f4f4;
+border-radius: 1px;
+}
+body,html{
+    width: 100%;
+    height: 100%;
+     }

@@ -1,0 +1,19 @@
+<div id="srh_bar">
+    <form id="srh_form" action="__APP__/Disk_Extract/index" method="get">
+        <input type="text" id="srh_input" name="searchInfo" value="请输入提取码" />
+        <input type="text" id="srh_type" name="searchType" value="extract"/>
+
+        <div id="srh_sc">
+                        <span id="srh_type_area">
+                            <span id="type_list_selected">提取</span>
+                            <ul id="type_list">
+                                <li type="extract">提取</li>
+                                <li type="search">搜索</li>
+                            </ul>
+                            <span id="srh_down" class="icon_1 img_downtraingle"></span>
+                        </span>
+
+            <input type="image" src="__PUBLIC__/image/icon/search.png" id="srh_btn" class="img_search" onclick="$('srh_form').submit();"/>
+        </div>
+    </form>
+</div>

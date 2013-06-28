@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>修改网盘</title>
+    <link href="__PUBLIC__/style/common.css" rel="stylesheet" type="text/css"/>
+   
+   
+   <link rel="stylesheet" href="__PUBLIC__/script/kindeditor/themes/default/default.css" />
+    <script type="text/javascript" src="__PUBLIC__/script/jquery-1.9.1.min.js"></script>
+    <script charset="utf-8" type="text/javascript" src="__PUBLIC__/script/kindeditor/kindeditor-min.js"></script>
+    <script charset="utf-8" type="text/javascript" src="__PUBLIC__/script/kindeditor/lang/zh_CN.js"></script>
+    <script type="text/javascript" >
+        KindEditor.ready(function(K) {
+            var editor1 = K.create('textarea[name="remark"]', {
+                fileManager : false,
+                allowImageUpload : false,
+                items : ['source', "|", "undo", "redo", "|", 'justifyleft', "justifycenter", "justifyright", "justifyfull", "insertorderedlist", "insertunorderedlist",
+                    "indent", "outdent", "subscript","superscript", "|", "clearhtml", "quickformat", "|", "fullscreen", "/",
+                    'formatblock', "fontname", "fontsize", "forecolor", "hilitecolor", "|", "bold", "italic", "underline", "strikethrough", "lineheight", "removeformat", "|",
+                    "emoticons", "image", "link", "unlink"
+                ]
+            });
+        });
+
+        $(function(){
+            $('.torrent_upload_form').css({
+                display: 'block',
+                position: 'absolute',
+                top: $('input[name=diskurl]').offset().top - 5,
+                left: $('input[name=diskurl]').offset().left + $('input[name=diskurl]').width()
+            });
+
+            window.onresize = function(){
+                $('.torrent_upload_form').css({
+                    top: $('input[name=diskurl]').offset().top - 5,
+                    left: $('input[name=diskurl]').offset().left + $('input[name=diskurl]').width()
+                });
+            };
+        });
+
+        function uploadResult( response ){
+            clearInterval(uploadTimer);
+            $(".upload_mask").hide();
+            if (response.code) {
+                alert(response.message);
+            }
+            else {
+                tipsAnimation();
+                $('input[name=diskurl]').val(response.data.magnetUri);
+
+                if($('input[name=name]').val() == "") $('input[name=name]').val( '【磁性连接】' + response.data.fileName );
+
+                var torrentInfo = "<p>==================分隔线==================</p><p><strong>磁性连接</strong><br/>文件名：<strong>"+response.data.fileName+"</strong><br/>大小：<strong>"+response.data.fileSize+"</strong></p>";
+                editor.appendHtml(torrentInfo);
+            }
+        }
+
+        function tipsAnimation(){
+            $('.upload_tips').css({
+                display: 'block',
+                top: 0,
+                opacity: 1
+            });
+
+            $('.upload_tips').animate({
+                top: -40,
+                opacity: 0
+            },1000);
+        }
+
+        function uploadTorrent(){
+            uploadTimer = setInterval(function(){ $(".upload_img").fadeOut(500).fadeIn(500); },1000);
+            $(".upload_mask").show();
+            $('.torrent_upload_form').submit();
+            return false;
+        }
+		</script>
+</head>
+<body>
+<div id="box">
+    <include file="Public:senhead"/>
+    <div id="box_inside">
+        <div id="advice"> 目前支持百度和迅雷网盘<br> 请确保你输入文件地址可以在浏览器中正常访问! 5次上传错误地址将会被封锁ip30天<br>
+
+<font color="red">
+  严禁提交三次元色情，血腥，暴力等。违者永久封邮箱，封ip.请大家命名的时候文件名前注明文件类型，例如【漫画】【新番】【游戏】【音乐】【图包】等等，便于检索
+            	
+
+</font></div>
+
+        <form action="__APP__/Torrent" method="post" class="torrent_upload_form" enctype="multipart/form-data" target="file_ajax">
+            <div>
+                <img class="upload_img" src="__PUBLIC__/image/bt_upload.png">
+                <input type="file" name="btfile" title="填入BT种子" size="1" onchange="uploadTorrent();"/>
+                <div class="mask_left"></div>
+                <div class="mask_right"></div>
+                <div class="upload_tips">Good Job</div>
+                <div class="upload_mask"></div>
+            </div>
+        </form>
+
+        <form action="__URL__/editSubmit/code/{$extractCode}" method="post" class="archives_form">
+            <table border="0" style="width: 900px; margin: 30px auto 0 auto">
+                <input type="hidden" name="password" maxlength="32" value="{$password}">
+                <tr>
+                    <td>文件名称（必填）</td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="name" maxlength="100" style="width: 300px;" value="{$archives.name}"></td>
+                </tr>
+                <tr>
+                    <td>网盘地址（必填，增加磁性链接和BT种子提交）</td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="diskurl" style="width: 500px;" maxlength="100" value="{$archives.diskurl}"></td>
+                </tr>
+
+                <tr>
+                    <td>邮箱（失效提醒会发到该邮箱）</td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="email" maxlength="50" style="width: 300px;" value="{$archives.email}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>简介（<font color="red">如x入图片 注意打码，解压密码一定要写上。还可以贴上介绍页面网址</font>）</td>
+                </tr>
+                <tr>
+                    <td>
+                    	<textarea name="remark" style="width: 700px;height:300px;display: none;">{$archives.remark}</textarea>
+                    	  	<p>
+									<input type="reset" name="reset" value="重置" />
+							</p>
+                    	
+                    	</td>
+                </tr>
+                <tr>
+                    <td>允许出现在列表和搜索页上</td>
+                </tr>
+                <tr>
+                    <td>
+                    <label>
+                    <input type="radio" name="allowsearch" value="1" <if condition="$archives.allowsearch eq 1">checked</if> >
+
+                    	允许</label>
+                     <label><input type="radio" name="allowsearch" value="0" <if condition="$archives.allowsearch eq 0">checked</if>>不允许</label></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="提交"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <include file="Public:footer"/>
+</div>
+
+<iframe style="display: none;" name="file_ajax"></iframe>
+</body>
+</html>

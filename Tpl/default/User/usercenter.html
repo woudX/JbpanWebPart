@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>个人主页</title>
+
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="__PUBLIC__/style/global.css" />
+    <link rel="stylesheet" href="__PUBLIC__/style/usercenter.css" />
+
+    <!-- Script -->
+    <script type="text/javascript" src="__PUBLIC__/script/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/script/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/script/hp_index.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/script/header.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/script/usercenter.js"></script>
+
+</head>
+<body>
+    <!-- 页面头部 -->
+    <include file="Public:globalheader"/>
+
+    <!-- 主界面 -->
+    <div id="container">
+        <div id="user_box">
+
+            <!-- 个人信息面板 -->
+            <div id="setting_context">
+                <div id="user_info_box">
+                    <ul id="user_info_list">
+                        <li><div id="user_head_img"><img src="__PUBLIC__/image/icon/my_head_160_160.jpg" /></div></li>
+                        <li><b>欢迎回来</b>，<span>{$loginData.username}</span></li>
+                    </ul>
+                </div>
+
+                <!-- 设置栏 -->
+                <div id="catalogue">
+                    <div id="personal_info" class="catalogue_btn" ifopen="true">
+                        <img src="__PUBLIC__/image/icon/minus.png">
+                        <span>个人资料</span>
+                    </div>
+                    <ul id="personal_info_list" class="catalogue_list">
+                        <li><span onclick="changeToPage('/User/personal_info_01');">基本信息</span></li>
+                        <li><span onclick="changeToPage('/User/personal_info_02');">上传头像</span></li>
+                        <li><span>签名档</span></li>
+                        <!-- <li><span>联系方式</span></li> -->
+                    </ul>
+
+                    <div id="email_info" class="catalogue_btn" ifopen="false">
+                        <span><img src="__PUBLIC__/image/icon/add.png"></span>
+                        <span>站内信</span>
+                    </div>
+                    <ul id="email_info_list" class="catalogue_list">
+                        <li><span>收件箱</span></li>
+                        <li><span>发件箱</span></li>
+                    </ul>
+
+                    <div id="skydriver_info" class="catalogue_btn" ifopen="false" >
+                        <lable><img src="__PUBLIC__/image/icon/add.png"></lable>
+                        <span>我的网盘</span>
+                    </div>
+                    <ul id="skydriver_info_list" class="catalogue_list">
+                        <li><span>我的收藏</span></li>
+                        <li><span>管理我的资源</span></li>
+                    </ul>
+
+                    <div id="security_info" class="catalogue_btn" ifopen="false">
+                        <lable><img src="__PUBLIC__/image/icon/add.png"></lable>
+                        <span>账户安全</span>
+                    </div>
+                    <ul id="security_info_list" class="catalogue_list">
+                        <li><span>修改密码</span></li>
+                        <li><span>修改验证邮箱</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="content">
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 页面下侧 -->
+    <include file="Public:globalfooter"/>
+</body>
+</html>

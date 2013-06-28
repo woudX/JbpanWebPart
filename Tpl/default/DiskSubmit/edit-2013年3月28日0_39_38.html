@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>修改网盘</title>
+    <link href="__PUBLIC__/style/common.css" rel="stylesheet" type="text/css"/>
+    <script charset="utf-8" type="text/javascript" src="__PUBLIC__/script/kindeditor/kindeditor-min.js"></script>
+    <script charset="utf-8" type="text/javascript" src="__PUBLIC__/script/kindeditor/lang/zh_CN.js"></script>
+    <script type="text/javascript" >
+    KindEditor.ready(function(K) {
+		var editor1 = K.create('textarea[name="remark"]',{
+			resizeType : 1,
+			allowPreviewEmoticons : false,
+			allowImageUpload : false,
+			items : [
+				'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+				'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+		});
+	});
+    </script>
+</head>
+<body>
+<div id="box">
+    <include file="Public:senhead"/>
+    <div id="box_inside">
+        <div> 目前支持百度和迅雷网盘<br/> 请确保你输入文件地址可以在浏览器中正常访问!<br/> 5次上传错误地址将会被封锁ip30天</div>
+        <form action="__URL__/editSubmit/code/{$extractCode}" method="post" class="archives_form">
+            <table border="0" style="width: 700px; margin: 30px auto 0 auto">
+                <input type="hidden" name="password" maxlength="32" value="{$password}">
+                <tr>
+                    <td>文件名称（必填）</td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="name" maxlength="100" style="width: 300px;" value="{$archives.name}"></td>
+                </tr>
+                <tr>
+                    <td>网盘地址（必填，确保地址可以在浏览器正常访问）</td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="diskurl" style="width: 500px;" maxlength="100" value="{$archives.diskurl}"></td>
+                </tr>
+
+                <tr>
+                    <td>邮箱（失效提醒会发到该邮箱）</td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="email" maxlength="50" style="width: 300px;" value="{$archives.email}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>备注（注意事项或者 解压密码 ==选填）</td>
+                </tr>
+                <tr>
+                    <td><textarea name="remark" style="width: 650px; display: none;">{$archives.remark}</textarea></td>
+                </tr>
+                <tr>
+                    <td>允许出现在列表和搜索页上</td>
+                </tr>
+                <tr>
+                    <td>
+                    <label>
+                    <input type="radio" name="allowsearch" value="1" <if condition="$archives.allowsearch eq 1">checked</if> >
+
+                    	允许</label>
+                     <label><input type="radio" name="allowsearch" value="0" <if condition="$archives.allowsearch eq 0">checked</if>>不允许</label></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="提交"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <include file="Public:footer"/>
+</div>
+</body>
+</html>

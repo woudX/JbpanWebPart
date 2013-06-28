@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>提取页面</title>
+    <link rel="stylesheet" href="__PUBLIC__/style/extract.css" />
+        <!-- Script -->
+    <script type="text/javascript" src="__PUBLIC__/script/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/script/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/script/header.js"></script>
+
+    <script type="text/javascript">
+    $(function(){
+         var width;
+         var height;
+        $(".list_filename").mouseenter(function(){
+            var textWidth=$(this).children('a').innerWidth(); //获取文本的宽度
+             //记录DIV原有的高度和宽度
+             width=$(this).width();
+             height=$(this).height();
+            if(textWidth>$(this).width()){
+                $(this).addClass("left");
+                var maxWidth=$("#list_content").width()-138; //计算DIV的最大宽度
+                if(textWidth<maxWidth){
+                    $(this).animate({width:+textWidth+'px'}, 500,'linear');
+                }
+                else{
+                    //如果文字过长就只能通过修改DIV的高度来显示了
+                     var textHeight=$(this).children('a').innerHeight()+30;
+                     $(this).animate({height:+textHeight+'px'}, 500,'linear');
+                     $(this).parent().animate({height:+textHeight+'px'}, 500,'linear');
+                     //必须修改父DIV的高度才能修改子DIV的高度
+                }
+            }
+        });
+        $(".list_filename").mouseleave(function(){
+                if($(this).height()==50){  //判断进行了宽度修改还是高度修改
+                    $(this).animate({width:+width+'px'}, 500,'linear',function(){
+                        $(this).removeClass("left");
+                        $(this).removeAttr("style");
+                        $(this).parent().removeAttr("style");
+                });
+                }
+                else{
+                    $(this).parent().animate({height:+height+'px'}, 500,'linear');
+                    $(this).animate({height:+height+'px'}, 500,'linear',function(){
+                        $(this).removeClass("left");
+                        $(this).removeAttr("style");
+                        $(this).parent().removeAttr("style");
+                });
+                }
+        });
+    });
+    </script>
+</head>
+<body> 
+    <div id="container">
+                <!-- 页面头部 -->
+         <include file="Public:globalheader"/>
+        <section>
+            <div id="list_content">
+                <ul>
+                    <li class="li_list">
+                        <div class="list_info">
+                            <div class="list_extract"><span  class="list_text" title="提取码">提取码</span></div>
+                            <div class="list_filename"><a   href="javascript:void(0)" class="list_text" title="文件名">文件名</a></div>
+                            <div class="list_netdisk"><span  class="list_text" title="网盘">网盘</span></div>
+                            <div class="list_downloads"><span  class="list_text" title="下载次数">下载次数</span></div>
+                            <div class="clear"></div>
+                        </div>
+                    </li>
+                 
+                 <li class="li_list">
+                        <div class="list_info">
+                            <div class="list_extract"><span  class="list_text" title="提取码">提取码</span></div>
+                            <div class="list_filename"><a   href="javascript:void(0)" class="list_text" title="文件名">文件名</a></div>
+                            <div class="list_netdisk"><span  class="list_text" title="网盘">网盘</span></div>
+                            <div class="list_downloads"><span  class="list_text" title="下载次数">下载次数</span></div>
+                            <div class="clear"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div id="file_info">
+                 
+            </div>
+        </section>
+
+        <!-- 页面下侧 -->
+         <include file="Public:globalfooter"/>
+
+        <!-- 用户登录页面 -->
+        <include file="User:login"/>
+    </div>
+</body>
+</html>

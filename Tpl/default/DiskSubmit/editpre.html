@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>密码输入</title>
+    <link href="__PUBLIC__/style/common.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="box">
+    <div id="box_inside">
+        <form action="__URL__/edit" method="post" style="width: 300px; display: block; margin: 250px auto;">
+            <input type="hidden" name="code" value="{$extractCode}">
+            <label>密码：</label><input type="text" name="password" maxlength="50"/>
+            <input type="submit" value="提交">
+            <a href=" javascript:history.back(-1);" style="margin-left: 100px;">返回</a>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>注册会员</title>
+
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="__PUBLIC__/style/index.css" />
+    <link rel="stylesheet" href="__PUBLIC__/style/register.css" />
+
+
+    <!-- Script -->
+    <script type="text/javascript" src="__PUBLIC__/script/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/script/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/script/hp_index.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/script/header.js"></script>
+
+</head>
+<body>
+
+<!-- 背景图片 -->
+<div id="hp_bg">
+    <img id="hp_bg_img" src="__PUBLIC__/image/bg/background1.jpg" />
+    <div id="hp_bl"></div>
+</div>
+
+<div id="container" >
+    <!-- 页面头部 -->
+    <include file="Public:globalheader"/>
+
+    <!-- 页面下侧 -->
+    <include file="Public:globalfooter"/>
+
+    <!-- 用户登录页面 -->
+    <include file="User:login"/>
+
+    <div id="reg_box">
+        <div id="reg_area">
+            <!-- 信息输入区 -->
+            <div id="info_area">
+                <div id="reg_title">
+                    <div id="title_big">JBPan<span>用户注册</span></div>
+                    <div id="title_small"><span>请阅读本站注册用户条款后，认真填写如下注册信息</span></div>
+                </div>
+                <form id="reg_info_form">
+
+                    <ul id="reg_info_ul_title">
+                        <li>用户名</li>
+                        <li>密码</li>
+                        <li>确认密码</li>
+                        <li>邮箱</li>
+                    </ul>
+                    <ul id="reg_info_ul">
+                        <li id="reg_username"><input type="input" name="username" /></li>
+                        <li id="reg_password"><input type="password" name="password" /></li>
+                        <li id="reg_affirm_password"><input type="password" name="affirm_password" /></li>
+                        <li id="reg_email"><input type="input" name="emailaddress" /></li>
+                    </ul>
+
+                    <div id="reg_agreeinfo">
+                        <span>我同意与路西法签订契约</span>&nbsp;&nbsp;<input type="checkbox" name="agreeinfo" />
+                        <div id="reg_agreeinfo_box">
+                            目前支持百度和迅雷网盘
+                            请确保你输入文件地址可以在浏览器中正常访问! 5次上传错误地址将会被封锁ip30天
+                            严禁提交三次元色情，血腥，暴力等。违者永久封邮箱，封ip.请大家命名的时候文件名前注明文件类型，例如【漫画】【新番】【游戏】【音乐】【图包】等等，便于检索
+                        </div>
+                    </div>
+
+                    <input type="submit" name="submit" id="reg_submit_btn" value="提交注册" />
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

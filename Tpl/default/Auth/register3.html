@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>注册</title>
+</head>
+<body>
+<form action="__URL__/register4" method="post">
+    <input type="hidden" name="email" value="{$email}">
+    <input type="hidden" name="encrycode" value="{$encryCode}">
+    邮箱：{$email}<br/>
+    <label>用户名：<input type="text" name="username"/></label><br/>
+    <label>密码：<input type="text" name="password"/></label><br/>
+    <label>确认密码：<input type="text" name="repassword"/></label><br/>
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>

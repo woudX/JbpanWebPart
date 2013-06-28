@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>列表页</title>
+    <link rel="stylesheet" href="__PUBLIC__/style/list.css" />
+        <!-- Script -->
+    <script type="text/javascript" src="__PUBLIC__/script/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/script/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/script/header.js"></script>
+
+    <script type="text/javascript">
+    $(function(){
+         var width;
+         var height;
+        $(".list_filename").mouseenter(function(){
+            var textWidth=$(this).children('a').innerWidth(); //获取文本的宽度
+             //记录DIV原有的高度和宽度
+             width=$(this).width();
+             height=$(this).height();
+            if(textWidth>$(this).width()){
+                $(this).addClass("left");
+                var maxWidth=$("#list_content").width()-138; //计算DIV的最大宽度
+                if(textWidth<maxWidth){
+                    $(this).animate({width:+textWidth+'px'}, 500,'linear');
+                }
+                else{
+                    //如果文字过长就只能通过修改DIV的高度来显示了
+                     var textHeight=$(this).children('a').innerHeight()+30;
+                     $(this).animate({height:+textHeight+'px'}, 500,'linear');
+                     $(this).parent().animate({height:+textHeight+'px'}, 500,'linear');
+                     //必须修改父DIV的高度才能修改子DIV的高度
+                }
+            }
+        });
+        $(".list_filename").mouseleave(function(){
+                if($(this).height()==50){  //判断进行了宽度修改还是高度修改
+                    $(this).animate({width:+width+'px'}, 500,'linear',function(){
+                        $(this).removeClass("left");
+                        $(this).removeAttr("style");
+                        $(this).parent().removeAttr("style");
+                });
+                }
+                else{
+                    $(this).parent().animate({height:+height+'px'}, 500,'linear');
+                    $(this).animate({height:+height+'px'}, 500,'linear',function(){
+                        $(this).removeClass("left");
+                        $(this).removeAttr("style");
+                        $(this).parent().removeAttr("style");
+                });
+                }
+        });
+        $("#page_up").click(function(){
+            var page=$("#nextPage").val();
+            if(page>=2){
+                location.href="http://"+location.hostname+"/index/archiveslist?&p="+(page-2);
+            }else{
+                location.href="http://"+location.hostname+"/index/archiveslist?&p=0";
+            }
+        });
+        $("#page_down").click(function(){
+            var page=$("#nextPage").val();
+            location.href="http://"+location.hostname+"/index/archiveslist?&p="+page;
+        });
+        
+         $( document ).ready(function(){
+            var page=$("#nextPage").val()-1;
+            var length=page+5;
+            for(var i=page-5;i<length;i++){
+              if(i>0){
+                var a=$('<a href="javascript:void(0)"><span class="page_O"></span><span class="list_number">'+i+'</span>'); 
+                $("#pages").append(a);
+              }
+              else{
+                length++;
+              }
+            $(".list_number").click(function(){
+            var page=$(this).text();
+            location.href="http://"+location.hostname+"/index/archiveslist?&p="+page;
+        });
+            }
+             $(".list_number").each(function(key,value){
+                if($(value).text()==page){
+                    $(value).addClass("now");
+                }
+             });
+        });
+    });
+    </script>
+</head>
+<body> 
+    <div id="container">
+                <!-- 页面头部 -->
+         <include file="Public:globalheader"/>
+        <section>
+            <div id="list_content">
+                <ul>
+                    <li class="li_list">
+                        <div class="list_info">
+                            <div class="list_extract"><span  class="list_text" title="提取码">提取码</span></div>
+                            <div class="list_filename">文件名</div>
+                            <div class="list_netdisk"><span  class="list_text" title="网盘">网盘</span></div>
+                            <div class="list_downloads"><span  class="list_text" title="下载次数">下载次数</span></div>
+                            <div class="clear"></div>
+                        </div>
+                    </li>
+                 <foreach name="archivesList" item="archives" >
+                    <li class="li_list">
+                        <div class="list_info">
+                            <div class="list_extract"><span  class="list_text" title="{$codePrefix}{$archives.id}">{$codePrefix}{$archives.id}</span></div>
+                            <div class="list_filename"><a   href="javascript:void(0)" class="list_text" title="{$archives.name}">{$archives.name}</a></div>
+                            <div class="list_netdisk"><span  class="list_text" title="{$archives.diskname}">{$archives.diskname}</span></div>
+                            <div class="list_downloads"><span  class="list_text" title="{$archives.downloads}">{$archives.downloads}</span></div>
+                            <div class="clear"></div>
+                        </div>
+                    </li>
+                 </foreach>
+                </ul>
+            </div>
+            <div id="list_page">
+                <div id="page_up"><a class="img_arrowleft" href="javascript: void(0)"></a></div>
+                <input id="nextPage" value="{$show.nextPage}" type="hidden">
+                <div id="pages">
+                    <a href="javascript:void(0)">
+                    <span class="page_Y"></span>
+                    <span class="list_number">&nbsp;</span>
+                    </a>
+                </div>
+                <div id="page_down"><a class="img_arrowright" href="javascript: void(0)"></a></div>
+                <div class="clear"></div>
+            </div>
+        </section>
+
+        <!-- 页面下侧 -->
+         <include file="Public:globalfooter"/>
+
+        <!-- 用户登录页面 -->
+        <include file="User:login"/>
+    </div>
+</body>
+</html>

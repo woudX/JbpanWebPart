@@ -1,0 +1,49 @@
+<header>
+    <!--页面上侧 -->
+    <div id="hp_sw_hdr">
+        <div id="sw_tb">
+
+            <!-- 左上 -->
+            <div id="sc_tb">
+                <ul id="sc_hdu">
+                    <li id="scpt1"><span id="sc_tt">JBPAN</span>公告板</li> |
+                    <li id="scpt2"><a href="__APP__/Index/post">提交网盘</a></li> |
+                    <li id="scpt3"><a href="__APP__/Index/archiveslist">查看所有资源</a></li>
+                </ul>
+
+                <!-- 网站公告 -->
+                <include file="Public:announcement"/>
+            </div>
+            <!-- 右上 -->
+            <div id="hp_ac_hdr">
+                <div id="ac_tb">
+
+                    <if condition="$isLogin!=true">
+                        <div id="ac_list_selected">
+                            <span>登陆</span>
+                            <span class="icon_1 img_downtraingle"></span>
+                        </div>
+                        <ul id="ac_list">
+                            <li><a href="__APP__/User/register">注册</a></li>
+                        </ul>
+                        <else />
+                        <div id="ac_list_selected_logged">
+                            <span>{$loginData.username}</span>
+                            <span class="icon_1 img_downtraingle"></span>
+                        </div>
+                        <ul id="ac_list">
+                            <li ><a href="/auth/logout">登出</a></li>
+                        </ul>
+                    </if>
+                </div>
+                <a id="user_setting_btn" class="icon_1 img_setn"  href="__APP__/User/usercenter"></a>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+
+

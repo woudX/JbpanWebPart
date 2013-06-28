@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>菊爆中心</title>
+
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="__PUBLIC__/style/index.css" />
+
+    <!-- Script -->
+    <script type="text/javascript" src="__PUBLIC__/script/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/script/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/script/hp_index.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/script/header.js"></script>
+
+</head>
+<body>
+
+    <!-- 背景图片 -->
+    <div id="hp_bg">
+        <img id="hp_bg_img" src="__PUBLIC__/image/bg/background1.jpg" />
+        <div id="hp_bl"></div>
+    </div>
+
+    <div id="container" >
+        <!-- 搜索栏 -->
+        <div id="srh_box">
+            <div id="srh_logo">
+                <img src="__PUBLIC__/image/icon/logo.png" />
+            </div>
+
+            <!-- srh_bar -->
+            <include file="Public:searchbar"/>
+        </div>
+
+        <!-- 页面头部 -->
+        <include file="Index:header"/>
+
+        <!-- 页面下侧 -->
+        <include file="Index:footer"/>
+
+   			 <!-- 用户登录页面 -->
+        <include file="User:login"/>
+
+    </div>
+</body>
+</html>

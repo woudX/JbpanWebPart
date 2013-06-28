@@ -1,0 +1,93 @@
+/* 搜索栏 */
+#srh_box {
+    position: absolute;
+    top: 25%;
+    left: 8%;
+    width: 800px;
+    margin: 0px;
+    z-index: 10;
+}
+
+#srh_logo {
+    position: absolute;
+    top: -10px;
+}
+
+#srh_bar {
+    position: absolute;
+    top: 0px;
+    left: 210px;
+}
+
+#srh_input {
+    width: 320px;
+    height: 30px;
+    color: #7a7a7a;
+    padding-left: 8px;
+    font-style: italic;
+}
+
+#srh_type {
+    display: none;
+}
+
+#srh_input:focus {
+    box-shadow: 0px 0px 5px #1813ce;
+}
+
+#srh_sc {
+    position: absolute;
+    width: 100px;
+    left: 220px;
+    top: 5px;
+}
+
+
+#srh_type_area {
+    cursor: pointer;
+}
+
+#type_list_selected {
+    width: 100px;
+    padding-right: 25px;
+}
+
+#type_list {
+    position: absolute;
+    top: 26px;
+    left: -12px;
+    width: 55px;
+    box-shadow: 0px 3px 3px rgba(0,0,0,0.4);
+    border: 1px solid #fff;
+    text-align: center;
+    display: none;
+}
+
+#type_list li {
+    color: #3c3c3c;
+    border-top: none;
+    padding: 6px 2px;
+    background: #fff;
+    margin: 0px auto;
+}
+
+#type_list li:hover {
+    background-color: rgba(0,0,0,0.4);
+    color: #fff;
+}
+
+#srh_down {
+    position: absolute;
+    left: 40px;
+    top: 10px;
+    display: inline-block;
+}
+
+
+#srh_btn {
+    position: absolute;
+    left: 68px;
+    top: -1px;
+    display: inline-block;
+    cursor: pointer;
+}

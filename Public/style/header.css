@@ -1,0 +1,154 @@
+/* header信息 */
+#hp_sw_hdr {
+    height: 35px;
+    background-color: rgb(51,51,51);
+    z-index:9;
+    width: 100%;
+    position: relative;
+    border: 0px none;
+    padding: 0px;
+}
+
+#sw_tb {
+    padding: 11px 0px 11px 5px;
+}
+
+#sc_hdu {
+    position: absolute;
+    top: 3px;
+    height: 35px;
+    color: #fff;
+    font-size: 19px;
+}
+
+#sc_hdu li {
+    display: inline-block;
+    margin: 0px 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#sc_hdu #scpt1 {
+    margin-top: 3px;
+    font-size: 20px;
+    color: #fff;
+}
+
+#sc_hdu #scpt2 a {
+    font-size: 17px;
+    color: #f06693;
+}
+
+#sc_hdu #scpt2 a:hover {
+    color: #E72364;
+}
+
+#sc_hdu #scpt3 a {
+    font-size: 17px;
+    color: #837dd1;
+}
+
+#sc_hdu #scpt3 a:hover {
+    color: #5D55C3;
+}
+
+#sc_hdu #scpt4 a {
+    font-size: 17px;
+    color: #33ff99;
+}
+
+#sc_hdu #scpt4 a:hover {
+    color: #00E673;
+}
+
+#flow_scpt1 {
+    position: absolute;
+    top: 35px;
+    left: 0px;
+    width: 320px;
+    height: 110px;
+    background-color: rgba(0,0,0,0.4);
+    box-shadow: 0px 3px 3px rgba(0,0,0,0.6);
+
+    display: none;
+}
+
+#flow_scpt1 span {
+    position: absolute;
+    margin: 20px 8px;
+    width: 95%;
+    height: 80%;
+    color: #f6f6f6;
+    line-height: 1.1em;
+
+}
+
+#sc_tt {
+    color:#f18740;
+}
+
+#hp_id_hdr {
+    position: absolute;
+    top: auto;
+    bottom: 0px;
+    right: 0px;
+    height: 35px;
+    width: 120px;
+    max-width: 150px;
+}
+
+
+#hp_ac_hdr > a {
+    position: absolute;
+    top: 8px;
+    right: 20px;
+    cursor: pointer;
+}
+
+#ac_tb {
+    position: absolute;
+    top: 7px;
+    right: 60px;
+    cursor: pointer;
+    height: 100%;
+    color: #fff;
+    font-weight: normal;
+}
+
+#ac_list {
+    position: absolute;
+    top: 27px;
+    left: -12px;
+    width: 55px;
+    box-shadow: 0px 3px 3px rgba(0,0,0,0.4);
+    border: 1px solid #3a3a3a;
+    border-top: 1px solid #333333;
+    text-align: center;
+    display: none;
+}
+
+#ac_list li {
+    color: #e6e6e6;
+    border-top: none;
+    padding: 6px 2px;
+    background: #333333;;
+    margin: 0px auto;
+}
+
+#ac_list li a {
+    color: #e6e6e6;
+    display: block;
+    text-decoration: none;
+}
+
+#ac_list li:hover {
+    background: rgba(0,0,0,0.6);
+}
+
+.list_hidden {
+    display: none;
+}
+
+#user_setting_btn:hover {
+    background-position: -100px -108px;;
+}

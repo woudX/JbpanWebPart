@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>搜索结果-菊爆盘</title>
+    <link href="__PUBLIC__/style/common.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="__PUBLIC__/script/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div id="box">
+    <include file="Public:senhead"/>
+
+    <div style="width: 900px; text-align: center; margin: 50px auto;">
+        <form id="search_from">
+            <input type="hidden" value="{$page}" name="page">
+            关键字：<input type="text" name="key" value="{$key}" style="width: 300px;">
+            <input type="submit" value="提交">
+        </form>
+    </div>
+
+    <table width="720" border="1" align="center" cellspacing="2" style="margin-top: 50px; margin-bottom: 50px;">
+        <tr>
+            <td>提取码</td>
+            <td>文件名</td>
+            <td>网盘</td>
+            <td>查看</td>
+        </tr>
+        <foreach name="archivesList" item="archives" >
+        <tr>
+                <td>{$codePrefix}{$archives.id}</td>
+                <td>{$archives.name}</td>
+                <td>{$archives.diskname}</td>
+                <td><a href="__APP__/DiskExtract/index/code/{$codePrefix}{$archives.id}">点我查看</a></td>
+        </tr>
+        </foreach>
+    </table>
+    <div style="width: 900px; text-align: center; margin: 20px auto;">
+        <if condition="$page gt 1"><a href="#" id="prev">上一页</a>  </if>
+        <a href="#" id="next">下一页</a>
+        当前第（{$page}）页
+    </div>
+
+    <include file="Public:footer"/>
+</div>
+
+<a href="__APP__/CheckcodeDeal/index/code/{$extractCode}" id="check_link" target="_blank"  style="display: none;">验证操作</a>
+<div id="lean_overlay"></div>
+<div id="download_dialog">
+    <h3>下载列表</h3>
+    <div class="loading"><img src="__PUBLIC__/image/loading.gif" style=""/></div>
+    <ul>
+    </ul>
+</div>
+</body>
+<script>
+    $('#prev').click(function(){
+        $('#search_from input[name=page]').val(parseInt( $('#search_from input[name=page]').val()) - 1);
+        $('#search_from').submit();
+        return false;
+    });
+
+    $('#next').click(function(){
+        $('#search_from input[name=page]').val(parseInt( $('#search_from input[name=page]').val()) + 1);
+        $('#search_from').submit();
+        return false;
+    });
+</script>
+</html>

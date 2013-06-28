@@ -1,0 +1,26 @@
+/* 搜索栏的全局模式 */
+#srh_bar {
+    position: absolute;
+    top: 12%;
+    left: 65%;
+}
+
+#srh_input {
+    width: 270px;
+    height: 25px;
+}
+
+#srh_sc {
+    position: absolute;
+    left: 180px;
+    top: 4px;
+}
+
+#srh_down {
+    position: absolute;
+    left: 30px;
+}
+
+#type_list_selected {
+    font-size: 0.95em;
+}
