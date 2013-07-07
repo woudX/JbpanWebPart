@@ -1,4 +1,29 @@
 /* icon信息 */
+
+.img_160_160 {
+    max-width: 160px;
+    height:auto;
+    width:expression(this.width > 160 ? "160px" : this.width);
+}
+
+.img_120_120 {
+    max-width: 120px;
+    height:auto;
+    width:expression(this.width > 120 ? "120px" : this.width);
+}
+
+.img_48_48 {
+    max-width: 48px;
+    height:auto;
+    width:expression(this.width > 48 ? "48px" : this.width);
+}
+
+.img_32_32 {
+    max-width: 32px;
+    height:auto;
+    width:expression(this.width > 32 ? "32px" : this.width);
+}
+
 .icon_1 {
     background: url("../image/icon/icon1.png") no-repeat;
     overflow: hidden;

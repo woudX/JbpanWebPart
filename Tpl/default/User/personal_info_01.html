@@ -6,7 +6,7 @@
             <div id="item_username" class="fi float-clear">
                 <label>用户名：</label>
                 <span class="textbox">
-                    <input class="input_textbox" type="text" name="username" />
+                    <input class="input_textbox" type="text" name="username"  value="{$info.username}"/>
                 </span>
                 <div class="msg">
                     <span class="notice-info hide">
@@ -18,15 +18,20 @@
             <div id="item_sex" class="fi float-clear">
                 <label>性别：</label>
                 <span class="radiobox">
+				<if condition="($info.sex eq man)">
                     男&nbsp;<input type="radio" name="sex" value="man" checked="true" />&nbsp;
                     女&nbsp;<input type="radio" name="sex" value="woman" /><br />
+                    <else />
+                         男&nbsp;<input type="radio" name="sex" value="man" />&nbsp;
+                    女&nbsp;<input type="radio" name="sex" value="woman" checked="true" /><br />
+                    </if>
                 </span>
             </div>
 
             <div id="item_qq" class="fi float-clear">
                 <label>QQ：</label>
                 <span class="textbox">
-                    <input class="input_textbox" type="text" name="password" />
+                    <input class="input_textbox" type="text" value="{$info.qq}" name="password" />
                 </span>
                 <div class="msg">
                     <span class="notice-info hide">
@@ -38,7 +43,7 @@
             <div id="item_email" class="fi float-clear">
                 <label>邮箱：</label>
                 <span class="textbox">
-                    <input class="input_textbox" type="text" name="password" />
+                    <input class="input_textbox" type="text" name="password" value="{$info.email}" />
                 </span>
                 <div class="msg">
                     <span class="notice-info hide">
@@ -50,9 +55,7 @@
             <div id="item_introduction" class="fi float-clear">
                 <label>自我介绍：</label>
                 <span class="textbox">
-                    <textarea name="introduction" class="input_textarea">
-
-                    </textarea>
+                    <textarea name="introduction" class="input_textarea">{$info.signature}</textarea>
                 </span>
                 <div class="msg">
                     <span class="notice-info hide">

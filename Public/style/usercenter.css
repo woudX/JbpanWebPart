@@ -111,7 +111,7 @@ html, body, #container {
     color: #FF6633;
 }
 
-#personal_info_list {
+#personal_info_list,#email_info_list {
     display: block;
 }
 
@@ -234,6 +234,135 @@ html, body, #container {
     background: rgba(0,0,0,0.95);
     box-shadow: 0px 0px 6px rgba(0,0,0,0.5);
     cursor: pointer;
+}
+
+/* pattern */
+
+.pattern {
+    margin: 20px 10px;
+}
+
+.pattern h4 {
+    color: #5a5a5a;
+    font-size: 16px;
+
+    margin: 5px 0px;
+}
+
+.pattern p {
+    width: 85%;
+    color: #2a2a2a;
+    font-size: 14px;
+    margin: 5px 0px;
+}
+
+.picbox {
+    margin: 30px 10px;
+}
+
+/* table */
+
+.pipe {
+    color: #9a9a9a;
+    margin: 0px 5px;
+}
+
+.underline {
+    border-bottom: 1px dotted #bababa;
+}
+
+.table_row {
+    width: 95%;
+    height: 60px;
+    padding: 5px 5px;
+    position: relative;
+}
+
+.table_row li {
+    float: left;
+    height: 48px;
+    display: inline-block;
+    padding: 3px 5px;
+
+}
+
+.td {
+    font-size: 14px;
+    color: #2a2a2a;
+}
+
+.td:hover {
+    background-color: rgba(0,0,0,0.2);
+    color: #000;
+
+}
+
+.sender_img {
+    width: 48px;
+}
+
+.sender_info {
+    display: inline-block;
+    margin: 0px 5px;
+    width: 130px;
+}
+
+.state img {
+    margin: 20px 0px;
+}
+
+.select input {
+    margin: 20px 0px;
+}
+
+.sender_name {
+
+}
+
+.sender_date {
+    margin: 3px 0px;
+}
+
+.email_title {
+    position: relative;
+    width: 400px;
+}
+
+.email_title .email_title_a {
+    max-width: 95%;
+    height: 15px;
+    margin: 2px 2px;
+    font-weight: bold;
+    color: #3a3a3a;
+    line-height: 15px;
+}
+
+.email_title .email_title_b {
+    width: 400px;
+    margin: 5px 0px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    color: #7a7a7a;
+}
+
+.delete_msg  img{
+    opacity: 0.6;
+}
+
+.delete_msg img:hover {
+    opacity: 1.0;
+    cursor: pointer;
+}
+
+/* menu */
+.menu {
+    font-size: 14px;
+    width: 750px;
+}
+
+.pages_btn {
+    float: right;
 }
 
 /* footer */
