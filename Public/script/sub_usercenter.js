@@ -23,3 +23,15 @@ $(document).ready(function() {
 $(document).ready(function() {
 
 })
+
+// 气泡提示效果
+$(document).ready(function() {
+    $(".btn_composition img").mousemove(function(event) {
+        var hint = $(this).next();
+        hint.fadeIn(100)
+    }).mouseleave(function() {
+        $(this).next().fadeOut(100);
+    })
+
+
+})

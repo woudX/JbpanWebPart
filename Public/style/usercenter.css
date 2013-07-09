@@ -355,6 +355,132 @@ html, body, #container {
     cursor: pointer;
 }
 
+/* email-detail */
+
+#email_bg {
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+
+#bg_headpic {
+    position: absolute;
+    top: 447px;
+    left: 10px;
+    width: 330px;
+    height: auto;
+    opacity: 0.5;
+}
+
+#email_bg {
+    position: absolute;
+    left: 7px;
+    top: -10px;
+    width: 750px;
+    height: auto;
+
+}
+
+#email_paper {
+    position: absolute;
+    left: 50px;
+    top: 100px;
+    width: 700px;
+    height: auto;
+}
+
+#sender_address, #reciever_address, #email_title {
+    font-size: 14px;
+    color: #5a5a5a;
+    padding-top: 3px;
+}
+
+.email_input {
+    background-color:transparent;
+    border: none;
+    width: 300px;
+    border-bottom: 1px solid #7a7a7a;
+}
+
+.email_item_title {
+    font-size: 16px;
+    color: #1a1a1a;
+    font-weight: bold;
+    text-align: right;
+    width: 100px;
+    padding-right: 12px;
+}
+
+#email_content {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dotted #7a7a7a;
+}
+
+#email_content p , #email_content textarea{
+    font-size: 16px;
+    text-indent: 2em;
+    width: 650px;
+    height: 235px;
+    line-height: 25px;
+
+}
+
+#email_content textarea {
+    resize: none;
+    background-color: transparent;
+    border: none;
+}
+
+#reply_menu_left, #reply_menu_right {
+    position: absolute;
+    top: -45px;
+    width: 120px;
+}
+
+
+#reply_menu_left {
+    left: -30px;
+}
+
+#reply_menu_right {
+    right: 30px;
+}
+
+.btn_composition {
+    position: relative;
+    margin-left: 20px;
+    float: left;
+}
+
+.btn_composition img {
+    opacity: 0.7;
+}
+
+.btn_composition img:hover {
+    opacity: 1.0;
+    cursor: pointer;
+}
+
+.hint {
+    position: absolute;
+    top: 25px;
+    left: 30px;
+    float: left;
+    display: none;
+    border: 1px solid #ccc;
+    background-color: rgba(0,0,0,0.6);
+    text-align: center;
+}
+
+.hint p {
+    padding: 2px 3px;
+    color: #f6f6f6;
+    font-size: 13px;
+    white-space: nowrap;
+
+}
+
 /* menu */
 .menu {
     font-size: 14px;
