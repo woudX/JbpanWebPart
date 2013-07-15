@@ -1,0 +1,15 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>播放列表</title>
+</head>
+<body>
+	<p>包含视频列表（ps:界面依旧是这么给力，此在线播放是使用KCPlayer的在线播放种子功能,而KCPlayer则是用了迅雷云播，因此有列表并不一定表示能播放，只有一些热门资源才能播放，那些冷门资源就残念了！）：</p>
+	<ul>
+	<foreach name="playUrlInfos" item="playUrl">
+	<li><a href="{$playUrl.playUrl}" target="_blank">{$playUrl.name}</a></li>
+	</foreach>
+	</ul>
+</body>
+</html>

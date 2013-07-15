@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>{$archives.name}--菊爆盘</title>
+    <link href="__PUBLIC__/style/common.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="__PUBLIC__/script/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/script/jquery.leanModal.min.js"></script>
+</head>
+<body>
+<div id="box">
+    <include file="Public:senhead"/>
+    <div id="box_inside">
+
+        <table border="1" align="center" cellspacing="2" style="margin-top: 50px; margin-bottom: 50px;">
+            <tr>
+                <td width="80" align="center" valign="middle">提取码</td>
+                <td width="460" align="center" valign="middle">文件名</td>
+                <td width="120" align="center" valign="middle">网盘</td>
+                <td width="100" align="center" valign="middle">进入管理</td>
+                <td width="100" align="center" valign="middle">一键下载</td>
+            </tr>
+            <tr>
+                <td width="80" align="center" valign="middle">{$extractCode}</td>
+                <td width="460" align="center" valign="middle">{$archives.name}</td>
+                <td width="120" align="center" valign="middle">{$archives.diskname}</td>
+                <td width="100" align="center" valign="middle"><a href="__APP__/DiskSubmit/editPre/code/{$extractCode}">进入管理</a>
+                </td>
+                <td width="100" align="center" valign="middle">
+                    <!--<a href="__APP__/Download/index/code/{$extractCode}">点我下载</a>-->
+                    <a href="#download_dialog" rel="leanModal">点我下载</a>
+                </td>
+
+            </tr>
+        </table>
+        <if condition="$archives.remark != ''">
+            <div id="archives_remark">
+                <div style="margin: 5px 0;">备注：</div>
+                <div class="remark_content"
+                     style="background: #ffffff; padding: 5px; font-size: 12px; border: 1px solid #000000; min-height: 150px;">
+                    {$archives.remark}
+                </div>
+            </div>
+        </if>
+
+
+    </div>
+    <include file="Public:footer"/>
+</div>
+
+<a href="__APP__/CheckcodeDeal/index/code/{$extractCode}" id="check_link" target="_blank"
+   style="display: none;">验证操作</a>
+
+<div id="lean_overlay"></div>
+<div id="download_dialog">
+    <h3>下载列表(可右键用渣雷等工具下载)</h3>
+
+    <div class="loading"><img src="__PUBLIC__/image/loading.gif" style=""/></div>
+    <ul>
+        <if condition="$archives.diskname =='Magnet'">
+            <li>{$archives.diskurl} （磁性链接）</li>
+            <li>请自行复制或</li>
+            <li><a href="{$archives.diskurl}" class="filename"><b>点此</b></a></li>
+        </if>
+    </ul>
+</div>
+<if condition="$archives.diskname !='Magnet'">
+    <script language="javascript">
+        $(function () {
+            $("a[rel*=leanModal]").leanModal();
+
+            $('a[rel=leanModal]').click(function () {
+                if ($('#download_dialog ul').data('hasData') != true) {
+                    $('#download_dialog ul').hide();
+                    $('#download_dialog .loading').show();
+                    $.ajax({
+                        url: "__APP__/Download/index/code/{$extractCode}",
+                        dataType: 'json',
+                        success: function (response) {
+                            if (response.code == 0) {
+                                var tmpHtml = '';
+                                for (var key in response.data) {
+                                    tmpHtml += '<li><a href="' + response.data[key].url + '" class="filename">' + response.data[key].fileName + '</a><span class="filesize">' + response.data[key].fileSize + '</span></li>';
+                                }
+
+                                $('#download_dialog ul').html(tmpHtml);
+                                $('#download_dialog ul').data('hasData', true);
+
+                                $('#download_dialog ul').show();
+                            }
+                            else if (response.code == 1) {
+                                alert(response.message);
+                                $('#lean_overlay')[0].click();
+                                $('#check_link')[0].click();
+                            }
+                            else if (response.code == -1){
+                                $.get('__APP__/LostEfficacyRemind/index/code/{$extractCode}');
+                                $('#lean_overlay')[0].click();
+                                alert(response.message);
+
+                            }
+                            $('#download_dialog .loading').hide();
+                        }
+                    })
+                }
+            });
+        });
+    </script>
+<else />
+    <script language="javascript">
+        $(function () {
+            $('#download_dialog .loading').hide();
+            $("a[rel*=leanModal]").leanModal();
+        });
+    </script>
+</if>
+</body>
+</html>

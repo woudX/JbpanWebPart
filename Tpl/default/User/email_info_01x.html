@@ -9,40 +9,39 @@
 
             <div id="email_paper">
                 <div class="pattern">
-                    <div id="sender_address"><label class="email_item_title">发件人：</label>JBPan工作小组</div>
-                    <div id="reciever_address"><label class="email_item_title">接收人：</label>jccgls001(jccglsw23@sina.com)</div>
-                    <div id="email_title"><label class="email_item_title">主题：</label>测试邮件（自动发送请勿回复）</div>
+                    <div id="sender_address"><label class="email_item_title">发件人：</label>{$mail.author}</div>
+                    <div id="reciever_address"><label class="email_item_title">接收人：</label>{$msgto}</div>
+                    <div id="email_title"><label class="email_item_title">主题：</label>{$mail.subject}</div>
                     <div id="email_content">
                         <p>
-                            这是一封很普通的测试邮件，如果您能看到这封邮件说明您的邮箱已经可以正常的收发邮件了。感谢
-                            您使用JBPan，如果有什么意见或建议，欢迎随时与本站相关负责人取得联系，联系地址可在网站的
-                            "联系我们"处获得。
+                           {$mail.message}
                         <p>
                     </div>
                 </div>
 
                 <div id="reply_menu_left">
                     <div class="btn_composition">
-                        <img src="__PUBLIC__/image/icon/back.png" onclick="changeToPage('/User/email_info_01')"/>
+                        <img class="btn" src="__PUBLIC__/image/icon/back.png" onclick="changeToPage('/User/email_info_01')"/>
                         <div class="hint"><p>返回收件箱</p></div>
-                    </div>
-
-                    <div class="btn_composition">
-                        <img src="__PUBLIC__/image/icon/reply.png" onclick="changeToPage('/User/email_info_02');"/>
-                        <div class="hint"><p>回复</p></div>
                     </div>
                 </div>
 
                 <div id="reply_menu_right">
-                        <div class="btn_composition">
-                            <img src="__PUBLIC__/image/icon/closed.png" onclick=""/>
-                            <div class="hint"><p>标记为未读</p></div>
-                        </div>
+                    <!--
+                    <div class="btn_composition">
+                        <img class="btn" src="__PUBLIC__/image/icon/closed.png" onclick=""/>
+                        <div class="hint"><p>标记为未读</p></div>
+                    </div>
+                    -->
+                    <div class="btn_composition">
+                        <img class="btn" src="__PUBLIC__/image/icon/reply.png" onclick="changeToPage('/User/email_info_02');"/>
+                        <div class="hint"><p>回复</p></div>
+                    </div>
 
-                        <div class="btn_composition">
-                            <img src="__PUBLIC__/image/icon/delete_2.png" onclick=""/>
-                            <div class="hint"><p>删除邮件</p></div>
-                        </div>
+                    <div class="btn_composition">
+                        <img class="btn" src="__PUBLIC__/image/icon/delete_2.png" onclick=""/>
+                        <div class="hint"><p>删除邮件</p></div>
+                    </div>
                 </div>
             </div>
         </div>

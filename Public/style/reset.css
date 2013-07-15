@@ -52,3 +52,33 @@ body,html{
     width: 100%;
     height: 100%;
      }
+
+
+.h_25 { height: 25px; }
+.h_30 { height: 30px; }
+.h_40 { height: 40px; }
+.h_60 {height: 60px; }
+
+.w_40 { width: 40px; }
+.w_80 { width: 80px; }
+.w_100 { width: 100px; }
+.w_150 { width: 150px; }
+.w_200 { width: 200px; }
+.w_300 { width: 300px; }
+.w_350 { width: 350px; }
+.w_400 { width: 400px; }
+
+.w_p85 { width: 85%; }
+.w_p95 { width: 95%; }
+.w_p97 { width: 97%; }
+
+.type_anime, .type_video, .type_game, .type_music, .type_picture, .type_other {
+    font-weight: bold;
+}
+
+.type_anime { color: #f60 !important;}
+.type_video { color: #3366CC !important;}
+.type_game { color: #8AE600 !important; }
+.type_music { color: #00E600 !important;}
+.type_picture { color: #FF6699 !important;}
+.type_other { color: #6666CC !important; }

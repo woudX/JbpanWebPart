@@ -34,13 +34,17 @@ function changeToPage(url) {
     });
 }
 
+// 切换当前页面到
+function changeToURL(url) {
+    window.open(url,"_blank");
+}
+
 // 初始页面载入
 $(document).ready(function() {
     changeToPage('/User/personal_info_01');
 })
 
 // 页面切换loading
-
 function loading(selector) {
     $(selector).html('<div class="loading"><img src="/Public/image/icon/loading.gif"><span>正在载入，请耐心等待~</span></div>');
 }

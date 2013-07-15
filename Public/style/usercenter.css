@@ -111,7 +111,7 @@ html, body, #container {
     color: #FF6633;
 }
 
-#personal_info_list,#email_info_list {
+#personal_info_list,#email_info_list,#skydriver_info_list {
     display: block;
 }
 
@@ -272,23 +272,47 @@ html, body, #container {
 }
 
 .table_row {
-    width: 95%;
-    height: 60px;
     padding: 5px 5px;
     position: relative;
 }
 
 .table_row li {
     float: left;
-    height: 48px;
     display: inline-block;
     padding: 3px 5px;
 
 }
 
+.table_row li p {
+    width: 100%;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+}
+
+.th {
+    padding: 10px 5px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.th li {
+    float: left;
+    padding: 3px 5px;
+}
+
+.th li p {
+    color: #5a5a5a !important;
+}
+
 .td {
     font-size: 14px;
     color: #2a2a2a;
+}
+
+.td span {
+    text-align: left;
 }
 
 .td:hover {
@@ -304,7 +328,7 @@ html, body, #container {
 .sender_info {
     display: inline-block;
     margin: 0px 5px;
-    width: 130px;
+    width: 160px;
 }
 
 .state img {
@@ -423,7 +447,7 @@ html, body, #container {
     width: 650px;
     height: 235px;
     line-height: 25px;
-
+    word-break: break-all;
 }
 
 #email_content textarea {
@@ -453,15 +477,6 @@ html, body, #container {
     float: left;
 }
 
-.btn_composition img {
-    opacity: 0.7;
-}
-
-.btn_composition img:hover {
-    opacity: 1.0;
-    cursor: pointer;
-}
-
 .hint {
     position: absolute;
     top: 25px;
@@ -480,6 +495,17 @@ html, body, #container {
     white-space: nowrap;
 
 }
+/* skydriver_02 */
+
+.btn {
+    opacity: 0.6;
+}
+
+.btn:hover {
+    opacity: 1.0;
+    cursor: pointer;
+}
+
 
 /* menu */
 .menu {

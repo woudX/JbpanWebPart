@@ -8,35 +8,37 @@
 
             <div id="email_paper">
                 <div class="pattern">
-                    <div id="sender_address"><label class="email_item_title">发件人：</label>{$loginData.username}</div>
-                    <div id="reciever_address">
-                        <label class="email_item_title">接收人：</label>
-                        <input type="text" class="email_input" name="reciever" />
-                    </div>
-                    <div id="email_title">
-                        <label class="email_item_title">主题：</label>
-                        <input type="text" class="email_input" name="title" />
-                    </div>
-                    <div id="email_content">
-                        <textarea name="content">请在此输入邮件内容~</textarea>
-                    </div>
+                    <form id="email_form" action="/user/send_site_mail" method="post">
+                        <div id="sender_address"><label class="email_item_title">发件人：</label>{$loginData.username}</div>
+                        <div id="reciever_address">
+                            <label class="email_item_title">接收人：</label>
+                            <input type="text" class="email_input" name="reciever" />
+                        </div>
+                        <div id="email_title">
+                            <label class="email_item_title">主题：</label>
+                            <input type="text" class="email_input" name="title" />
+                        </div>
+                        <div id="email_content">
+                            <textarea name="content">请在此输入邮件内容~</textarea>
+                        </div>
+                    </form>
                 </div>
 
                 <div id="reply_menu_left">
                     <div class="btn_composition">
-                        <img src="__PUBLIC__/image/icon/back.png" onclick="changeToPage('/User/email_info_01')"/>
+                        <img class="btn" src="__PUBLIC__/image/icon/back.png" onclick="changeToPage('/User/email_info_01')"/>
                         <div class="hint"><p>返回收件箱</p></div>
                     </div>
                 </div>
 
                 <div id="reply_menu_right">
                     <div class="btn_composition">
-                        <img src="__PUBLIC__/image/icon/send.png" />
+                        <img class="btn" src="__PUBLIC__/image/icon/send.png" onclick="$('#email_form').submit()"/>
                         <div class="hint"><p>发送</p></div>
                     </div>
 
                     <div class="btn_composition">
-                        <img src="__PUBLIC__/image/icon/save.png" />
+                        <img class="btn" src="__PUBLIC__/image/icon/save.png" />
                         <div class="hint"><p>保存为草稿</p></div>
                     </div>
                 </div>

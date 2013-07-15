@@ -8,7 +8,81 @@
     <script type="text/javascript" src="__PUBLIC__/script/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="__PUBLIC__/script/jquery-ui.min.js"></script>
     <script type="text/javascript" src="__PUBLIC__/script/header.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/script/jquery.leanModal.min.js"></script>
 
+    <style>
+
+        #lean_overlay {
+            position: fixed;
+            z-index:100;
+            top: 0px;
+            left: 0px;
+            height:100%;
+            width:100%;
+            background: #000;
+            display: none;
+        }
+
+        #download_dialog {
+            width: 700px;
+            display: none;
+            background: #ffffff;
+            border: 3px solid #000000;
+            min-height: 200px;
+        }
+
+        #download_dialog h3 {
+            background: #cccccc;
+            margin: 0;
+            padding: 10px 5px;
+        }
+
+        #download_dialog ul {
+            list-style: none;
+            margin: 0;
+            padding: 10px 0px;
+        }
+
+        #download_dialog ul li {
+            height: 30px;
+            padding: 0 20px;
+            font-size: 12px;
+            line-height: 30px;
+        }
+
+        #download_dialog ul li:hover {
+            background: #a6cccc;
+        }
+
+        #download_dialog ul li a.filename {
+            display: block;
+            float: left;
+            width: 570px;
+            color: black;
+            margin-right: 20px;
+            text-decoration: none;
+            text-overflow:ellipsis;
+            white-space: nowrap;
+            overflow:hidden;
+            -webkit-text-overflow:ellipsis;
+        }
+
+        #download_dialog ul li a.filename:hover {
+            color: red;
+        }
+
+        #download_dialog ul li a.filesize {
+            margin-left: 20px;
+            color: #333333;
+        }
+
+        #download_dialog .loading img {
+            display: block;
+            margin: 0 auto;
+            margin-top: 40px;
+        }
+
+    </style>
     <script type="text/javascript">
     $(function(){
          var width;
@@ -72,17 +146,18 @@
                  
                  <li class="li_list">
                         <div class="list_info">
-                            <div class="list_extract"><span  class="list_text" title="提取码">提取码</span></div>
-                            <div class="list_filename"><a   href="javascript:void(0)" class="list_text" title="文件名">文件名</a></div>
-                            <div class="list_netdisk"><span  class="list_text" title="网盘">网盘</span></div>
-                            <div class="list_downloads"><span  class="list_text" title="下载次数">下载次数</span></div>
+                            <div class="list_extract"><span  class="list_text" title="提取码">{$extractCode}</span></div>
+                            <div class="list_filename"><a   href="#download_dialog" rel="leanModal" class="list_text" title="文件名"> {$archives.name}</a></div>
+                            <div class="list_netdisk"><span  class="list_text" title="网盘">{$archives.diskname}</span></div>
+                            <div class="list_downloads"><span  class="list_text" title="下载次数">{$archives.downloads}</span></div>
                             <div class="clear"></div>
                         </div>
                     </li>
                 </ul>
+             
             </div>
             <div id="file_info">
-                 
+                {$archives.remark}
             </div>
         </section>
 
@@ -92,5 +167,86 @@
         <!-- 用户登录页面 -->
         <include file="User:login"/>
     </div>
+
+
+    <a href="__APP__/CheckcodeDeal/index/code/{$extractCode}" id="check_link" target="_blank"
+       style="display: none;">验证操作</a>
+
+    <div id="lean_overlay"></div>
+    <div id="download_dialog">
+        <h3>下载列表(可右键用渣雷等工具下载)</h3>
+
+        <div class="loading"><img src="__PUBLIC__/image/loading.gif" style=""/></div>
+        <ul>
+            <if condition="$archives.diskname =='Magnet'">
+                <li>{$archives.diskurl} （磁性链接）</li>
+                <li>请自行复制或</li>
+                <li><a href="{$archives.diskurl}" class="filename"><b>点此</b></a></li>
+            </if>
+        </ul>
+    </div>
+
+    <script>
+        $(function(){
+            var clicked = false;
+            $('a[rel=leanModal]').click(function () {
+                if(!clicked){
+                    $.get('__APP__/Download/_t/code/{$extractCode}');
+                    clicked = true;
+                }
+            });
+        });
+    </script>
+
+    <if condition="$archives.diskname !='Magnet'">
+        <script language="javascript">
+            $(function () {
+                $("a[rel*=leanModal]").leanModal();
+
+                $('a[rel=leanModal]').click(function () {
+                    if ($('#download_dialog ul').data('hasData') != true) {
+                        $('#download_dialog ul').hide();
+                        $('#download_dialog .loading').show();
+                        $.ajax({
+                            url: "__APP__/Download/index/code/{$extractCode}",
+                            dataType: 'json',
+                            success: function (response) {
+                                if (response.code == 0) {
+                                    var tmpHtml = '';
+                                    for (var key in response.data) {
+                                        tmpHtml += '<li><a href="' + response.data[key].url + '" class="filename">' + response.data[key].fileName + '</a><span class="filesize">' + response.data[key].fileSize + '</span></li>';
+                                    }
+
+                                    $('#download_dialog ul').html(tmpHtml);
+                                    $('#download_dialog ul').data('hasData', true);
+
+                                    $('#download_dialog ul').show();
+                                }
+                                else if (response.code == 1) {
+                                    alert(response.message);
+                                    $('#lean_overlay')[0].click();
+                                    $('#check_link')[0].click();
+                                }
+                                else if (response.code == -1){
+                                    $.get('__APP__/LostEfficacyRemind/index/code/{$extractCode}');
+                                    $('#lean_overlay')[0].click();
+                                    alert(response.message);
+
+                                }
+                                $('#download_dialog .loading').hide();
+                            }
+                        })
+                    }
+                });
+            });
+        </script>
+        <else />
+        <script language="javascript">
+            $(function () {
+                $('#download_dialog .loading').hide();
+                $("a[rel*=leanModal]").leanModal();
+            });
+        </script>
+    </if>
 </body>
 </html>

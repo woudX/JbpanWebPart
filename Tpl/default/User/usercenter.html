@@ -40,10 +40,9 @@
                         <span>个人资料</span>
                     </div>
                     <ul id="personal_info_list" class="catalogue_list">
-                        <li><span onclick="changeToPage('/User/personal_info_01');">基本信息</span></li>
-                        <li><span onclick="changeToPage('/User/personal_info_02');">设置头像</span></li>
-                        <li><span onclick="changeToPage('/User/personal_info_03');">签名档</span></li>
-                        <!-- <li><span>联系方式</span></li> -->
+                        <li><span onclick="changeToPage('__APP__/User/personal_info_01');">基本信息</span></li>
+                        <li><span onclick="changeToPage('__APP__/User/personal_info_02');">设置头像</span></li>
+                        <li><span onclick="changeToPage('__APP__/User/personal_info_03');">签名档</span></li>
                     </ul>
 
                     <div id="email_info" class="catalogue_btn" ifopen="true">
@@ -51,17 +50,17 @@
                         <span>站内信</span>
                     </div>
                     <ul id="email_info_list" class="catalogue_list">
-                        <li><span onclick="changeToPage('/User/email_info_01');">收件箱</span></li>
-                        <li><span onclick="changeToPage('/User/email_info_02');">发件箱</span></li>
+                        <li><span onclick="changeToPage('__APP__/User/email_info_01');">收件箱</span></li>
+                        <li><span onclick="changeToPage('__APP__/User/email_info_02');">发件箱</span></li>
                     </ul>
 
-                    <div id="skydriver_info" class="catalogue_btn" ifopen="false" >
-                        <lable><img src="__PUBLIC__/image/icon/add.png"></lable>
+                    <div id="skydriver_info" class="catalogue_btn" ifopen="true" >
+                        <lable><img src="__PUBLIC__/image/icon/minus.png"></lable>
                         <span>我的网盘</span>
                     </div>
                     <ul id="skydriver_info_list" class="catalogue_list">
-                        <li><span>我的收藏</span></li>
-                        <li><span>管理我的资源</span></li>
+                        <li><span onclick="changeToPage('__APP__/User/skydriver_info_01')">我的收藏</span></li>
+                        <li><span onclick="changeToPage('__APP__/User/skydriver_info_02')">资源管理</span></li>
                     </ul>
 
                     <div id="security_info" class="catalogue_btn" ifopen="false">
@@ -69,8 +68,8 @@
                         <span>账户安全</span>
                     </div>
                     <ul id="security_info_list" class="catalogue_list">
-                        <li><span>修改密码</span></li>
-                        <li><span>修改验证邮箱</span></li>
+                        <li><span onclick="changeToPage('__APP__/User/security_info_01')">修改密码</span></li>
+                        <!-- <li><span>修改验证邮箱</span></li> -->
                     </ul>
                 </div>
             </div>
@@ -84,5 +83,9 @@
 
     <!-- 页面下侧 -->
     <include file="Public:globalfooter"/>
+
+    <!-- 用户登录页面 -->
+    <include file="User:login"/>
+
 </body>
 </html>

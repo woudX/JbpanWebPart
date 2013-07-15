@@ -32,6 +32,4 @@ $(document).ready(function() {
     }).mouseleave(function() {
         $(this).next().fadeOut(100);
     })
-
-
 })

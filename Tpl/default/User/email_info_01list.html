@@ -1,0 +1,31 @@
+<!-- 收件箱列表 -->
+<div id="email_info_01" class="boxes">
+    <div class="items_box">
+        <div class="items_title">与{$msgfrom}的对话</div>
+
+        <div class="pattern menu">
+            <span class="pages_btn">
+              
+            </span>
+        </div>
+
+        <div class="pattern">
+            <foreach name="userchatlist" item="userchat" >
+                <ul class="table_row w_p97 h_60 td underline">
+                    <li class="state"><img src="__PUBLIC__/image/icon/pm_1.gif" /></li>
+                    <li class="select"><input type="checkbox" value="" /></li>
+                    <li class="sender_img"><img class="img_48_48" src="{$avatar_big}" /></li>
+                    <li class="sender_info">
+                        <div><a href="#" class="sender_name">{$userchat.lastauthor}</a></div>
+                        <div class="sender_date">2013-07-07 17:55</div>
+                    </li>
+                    <li class="email_title">
+                        <div class="email_title_a"><a href="javascript:void(0)" onclick="changeToPage('/User/email_info_01x?pmid={$userchat.pmid}')">{$userchat.title}</a></div>
+                        <div class="email_title_b">{$userchat.message}</div>
+                    </li>
+                    <li class="delete_msg"><img class="btn" src="__PUBLIC__/image/icon/delete.png" /></li>
+                </ul>
+            </foreach>
+        </div>
+    </div>
+</div>

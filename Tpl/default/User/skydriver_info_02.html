@@ -1,0 +1,29 @@
+<!-- 签名档 -->
+<div id="skydriver_info_01" class="boxes">
+    <div class="items_title">资源管理</div>
+
+    <div class="pattern">
+        <ul class=" h_25 w_p95 th ">
+            <li class="s_type w_40"><p>类别</p></li>
+            <li class="s_extract w_80"><p>提取码</p></li>
+            <li class="s_title w_400"><p>名称</p></li>
+            <li class="s_data w_80"><p>发布时间</p></li>
+            <li class="s_modify w_40"><p>修改</p></li>
+            <li class="s_delete w_40"><p>删除</p></li>
+        </ul>
+  <foreach name="archiveslist" item="archives" >
+        <ul class="table_row h_30 w_p95 td underline">
+            <li class="s_type w_40"><p class="type_game">{$archives.category}</p></li>
+            <li class="s_extract w_80"><p>{$codePrefix}{$archives.id}</p></li>
+            <li class="s_title w_400"><p>{$archives.name}</p></li>
+            <li class="s_data w_80"><p>{$archives.dateline}</p></li>
+            <li class="s_modify w_40">
+                <img class="btn" onclick="changeToURL('__APP__/DiskSubmit/edit/code/{$codePrefix}{$archives.id}')"
+                     src="__PUBLIC__/image/icon/modify_24_24.png" />
+            </li>
+            <li class="s_delete w_40"><img class="btn" src="__PUBLIC__/image/icon/delete_24_24.png" /></li>
+        </ul>
+  </foreach>
+      
+    </div>
+</div>

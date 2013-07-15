@@ -1,18 +1,20 @@
 <HTML>
-	<HEAD>  
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<META NAME="GENERATOR" Content="Microsoft Visual Studio .NET 7.1">
-		<TITLE>菊爆盘</TITLE>
-	</HEAD>
-	<BODY>
-    <if condition="$status">
-        <div class="success_title">成功</div>
-        <div class="success_message">{$message}</div>
-    <else/>
-        <div class="error_title">失败</div>
-        <div class="error_message">{$message}</div>
-    </if>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<META NAME="GENERATOR" Content="Microsoft Visual Studio .NET 7.1">
+<TITLE>菊爆盘</TITLE>
+</HEAD>
+<BODY>
+	<if condition="$status">
+	<div class="success_title">成功</div>
+	<div class="success_message">{$message}</div>
+	<else />
+	<div class="error_title">失败</div>
+	<div class="error_message">{$message}</div>
+	</if>
 
-    <div><a href=" {$jumpUrl}"> 返回</a></div>
-	</BODY>
+	<div>
+		<a href=" {$jumpUrl}"> 返回</a>
+	</div>
+</BODY>
 </HTML>
