@@ -1,0 +1,73 @@
+
+<div id="info_area">
+    <div id="reg_title">
+        <div id="title_big">JBPan<span>用户注册</span></div>
+        <div id="title_small"><span>请阅读本站注册用户条款后，认真填写如下注册信息</span></div>
+    </div>
+    <form id="reg_info_form" action="" method="post">
+        <div id="reg_username" class="fi float-clear">
+            <label>用户名：</label>
+                <span class="textbox">
+                    <input class="input_textbox" type="text" name="username" value="" />
+                </span>
+            <div class="msg">
+                <span class="notice-info hide">
+                    用户名可包含大小写字母、阿拉伯数字以及下划线，或者是汉字
+                </span>
+            </div>
+        </div>
+
+        <div id="reg_password" class="fi float-clear">
+            <label>密码：</label>
+                <span class="textbox">
+                    <input class="input_textbox" type="password" name="password" value="" />
+                </span>
+            <div class="msg">
+                <span class="notice-info hide">
+                    密码被别的太奇怪就行，免得自己最后也给忘了= =
+                </span>
+            </div>
+        </div>
+
+        <div id="reg_affirm_password" class="fi float-clear">
+            <label>确认密码：</label>
+                <span class="textbox">
+                    <input class="input_textbox" type="password" name="password_2" value="" />
+                </span>
+            <div class="msg">
+                <span class="notice-info hide">
+                    请再输入一遍密码
+                </span>
+            </div>
+        </div>
+
+        <div id="reg_email" class="fi float-clear">
+            <label>电子邮箱：</label>
+                <span class="textbox">
+                    <input class="input_textbox readonly" type="text" name="password_2" readonly="true"
+                           value="jccgls001@126.com" />
+                </span>
+            <div class="msg">
+                <span class="notice-info hide">
+                    不能改了，哇卡卡卡= =
+                </span>
+            </div>
+        </div>
+
+        <div class="reg_checkbox float-clear">
+            <label class="w_350" for="reg_agree">我同意本站的用户注册条款，并保证遵守该规则</label>
+            <input type="checkbox" id="reg_agree" name="agreeinfo" />
+        </div>
+
+        <div id="reg_agreeinfo_box" class="reg_richbox w_600 float-clear">
+            目前支持百度网盘、迅雷快船和腾讯微盘
+            请确保你输入文件地址可以在浏览器中正常访问! 5次上传错误地址将会被封锁ip30天
+            严禁提交三次元色情，血腥，暴力等。违者永久封邮箱，封ip.请大家命名的时候文件名前注明文件类型，例如【漫画】【新番】【游戏】【音乐】【图包】等等，便于检索
+        </div>
+
+        <input type="submit" name="submit" id="btn_submit" value="提交注册" />
+    </form>
+
+    <!-- 特效控制脚本等 -->
+    <script type="text/javascript" src="__PUBLIC__/script/register.js"></script>
+</div>

@@ -1,0 +1,74 @@
+.bg_mask {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(50,50,50,0.5);
+    z-index: -1;
+}
+
+.inform_box {
+    position: absolute;
+    top: calc(50% - 140px);
+    left: calc(50% - 275px);
+    width: 550px;
+    height: 170px;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    box-shadow: 0px 0px 3px rgba(0,0,0,0.1);
+
+    background:-moz-linear-gradient(top,#e6e6e6,#f6f6f6);
+    background:-webkit-gradient(linear,center top,center bottom,from(#e6e6e6),to(#f6f6f6));
+    background:-webkit-linear-gradient(top,#e6e6e6,#f6f6f6);
+    background:-ms-linear-gradient(top,#e6e6e6,#f6f6f6);
+    background:linear-gradient(top,#e6e6e6,#f6f6f6);
+}
+
+.inform_title {
+    position: relative;
+    width: 100%;
+    height: 35px;
+    border-bottom: 2px solid #d6d6d6;
+
+    background:-moz-linear-gradient(top,#2697E3,#3DA2E6);
+    background:-webkit-gradient(linear,center top,center bottom,from(#2697E3),to(#3DA2E6));
+    background:-webkit-linear-gradient(top,#2697E3,#3DA2E6);
+    background:-ms-linear-gradient(top,#2697E3,#3DA2E6);
+    background:linear-gradient(top,#2697E3,#3DA2E6);
+
+}
+
+.inform_title span {
+    position: absolute;
+    top: 6px;
+    left: 15px;
+    color: #f6f6f6;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.inform_main {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.inform_icon {
+    position: absolute;
+    top: 25px;
+    left: 40px;
+}
+
+.main_info {
+    position: absolute;
+    top: 30px;
+    left: 120px;
+    font-size: 15px;
+    color: #2a2a2a;
+}
+
+.info_f {
+    padding-top: 3px;
+
+}

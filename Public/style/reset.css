@@ -67,7 +67,8 @@ body,html{
 .w_300 { width: 300px; }
 .w_350 { width: 350px; }
 .w_400 { width: 400px; }
-
+.w_500 { width: 500px; }
+.w_600 { width: 600px; }
 .w_p85 { width: 85%; }
 .w_p95 { width: 95%; }
 .w_p97 { width: 97%; }

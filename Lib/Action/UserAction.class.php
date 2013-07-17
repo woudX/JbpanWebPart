@@ -176,5 +176,9 @@ class UserAction extends DKAction
 			$this->display();
 		}
 
+		public function inform() {
+                	$this->display();
+                }
+
 }
 ?>
