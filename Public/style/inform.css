@@ -10,6 +10,8 @@
 
 .inform_box {
     position: absolute;
+    top: 30%;       /* 360Chrome Hack */
+    left: 32%;      /* 360Chrome Hack */
     top: calc(50% - 140px);
     left: calc(50% - 275px);
     width: 550px;

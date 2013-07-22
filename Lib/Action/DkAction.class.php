@@ -19,7 +19,7 @@ class DkAction extends Action {
 	
 	protected function checkLogin(){
 		if(!$this->isLogin)
-			header('Location: http://'.C('SITE_URL').'/Auth/login');
+			header('Location: http://'.C('SITE_URL').'/User/inform');
 	} 
 }
 

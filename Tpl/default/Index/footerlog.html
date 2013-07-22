@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>JBPan的记事本</title>
+
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="__PUBLIC__/style/global.css" />
+    <link rel="stylesheet" href="__PUBLIC__/style/footerlog.css" />
+
+    <!-- Script -->
+    <script type="text/javascript" src="__PUBLIC__/script/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/script/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/script/hp_index.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/script/header.js"></script>
+
+
+</head>
+<body>
+    <!-- 页面头部 -->
+    <include file="Public:globalheader" />
+
+    <div id="container">
+        <div class="log_box">
+           
+        
+         <if condition=" $ft eq 1">
+            <include file="Public:footerlog_update" />
+        <elseif condition="$ft eq 2" />
+            <include file="Public:footerlog_linkfriends" />
+        <elseif condition="$ft eq 3" />
+            <include file="Public:footerlog_aboutus" />
+        <else />
+            <include file="Public:footerlog_help" />
+        </if>
+        </div>
+    </div>
+
+    <!-- 页面下侧 -->
+    <include file="Public:globalfooter" />
+
+    <!-- 登陆页面 -->
+    <include file="User:login" />
+</body>
+</html>

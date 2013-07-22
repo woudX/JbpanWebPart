@@ -24,16 +24,23 @@
     <div class="bg_mask"></div>
 
     <div id="container">
-        <include file="User:inform_error_login" />
+        <if condition=" $muban eq 1">
+            <include file="User:inform_login_ok" />
+        <elseif condition="$muban eq 2" />
+            <include file="User:inform_reg_waitemail" />
+        <elseif condition="$muban eq 3" />
+            <include file="User:inform_reg_ok" />
+             <elseif condition="$muban eq 4" />
+                  <include file="User:inform_reg_ok" />
+        <else />
+            <include file="User:inform_error_login" />
+        </if>
     </div>
 
 	<!-- 页面下侧 -->
 	<include file="Public:globalfooter" />
 
-	<!-- 注册页面 -->
-	<include file="Uaer:register" />
-
 	<!-- 登陆页面 -->
-	<include file="Uaer:login" />
+	<include file="User:login" />
 </body>
 </html>

@@ -39,6 +39,7 @@
                         $(this).removeClass("left");
                         $(this).removeAttr("style");
                         $(this).parent().removeAttr("style");
+                        $(".list_filename").width($("#list_content").width()-355+'px');
                 });
                 }
                 else{
@@ -47,6 +48,7 @@
                         $(this).removeClass("left");
                         $(this).removeAttr("style");
                         $(this).parent().removeAttr("style");
+                        $(".list_filename").width($("#list_content").width()-355+'px');
                 });
                 }
         });
@@ -64,6 +66,18 @@
         });
         
          $( document ).ready(function(){
+
+            window.onresize = function(){
+                change_size();
+            }
+            window.onload = function() {
+                change_size();
+            }
+            function change_size(){
+                $("section").height($("body").height()-80+'px');
+                $(".list_filename").width($("#list_content").width()-355+'px');
+                $("#pages").css("margin-left", ($(".list_info").width()-264)/2-116+'px');
+            }
             var page=$("#nextPage").val()-1;
             var length=page+5;
             for(var i=page-5;i<length;i++){

@@ -31,7 +31,7 @@ class IndexAction extends DkAction
 		$Page = new Page($count, C('SEARCH_PAGESIZE'));
 		$show = $Page->show();
 		$Page->setConfig('header', '员');
-		$list = $User->where('id>1')->order('dateline')->limit($Page->firstRow.','.$Page->listRows)->select();
+		$list = $User->where('id>1')->order('dateline desc')->limit($Page->firstRow.','.$Page->listRows)->select();
 		$this->assign('archivesList',$list);
 		$this->assign('codePrefix',C('CODE_PREFIX'));
 
@@ -50,8 +50,13 @@ class IndexAction extends DkAction
 	function test() {
 		$all=D("DkUser");
 		//var_dump($all);
+	}
+
+	function footerlog() {
+		$ft=$_GET['ft'];
 		
-		
+		$this->assign(ft,$ft);
+	    $this->display();
 	}
 	
 

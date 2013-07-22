@@ -104,7 +104,22 @@
 }
 
 #wnd_input ul li span a:hover {
-    color: #3a3a3a;
+    color: #f80;
+}
+
+#wnd_input ul li span a:focus {
+    color: #f80;
+}
+
+#wnd_select {
+    position: absolute;
+    top: 3px;
+    left: 150px;
+    width: 130px;
+}
+
+#wnd_select li {
+    padding-bottom: 11px;
 }
 
 #login_btn {
@@ -133,12 +148,14 @@
     letter-spacing: 0.1em;
 }
 
-#login_btn:hover {
+#login_btn:hover, #login_btn:focus {
     background: #060606;
     color: #f6f6f6;
     box-shadow: 0px 0px 4px rgba(0,0,0,0.9);
     cursor: pointer;
 }
+
+
 
 #login_egg {
     position: absolute;

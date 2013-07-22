@@ -47,14 +47,14 @@ $(document).ready(function() {
 
     function change_bg(next) {
         $("#hp_bg img").fadeOut(600, function() {
-            $("#hp_bg img").attr("src","/Public/image/bg/background" + next + ".png");
+            $("#hp_bg img").attr("src","/Public/image/bg/background" + next + ".jpg");
             $("#hp_bg img").fadeIn(600);
         });
     }
 
     //进入图片随机
     var randId = parseInt(1 + max_id * Math.random());
-    $("#hp_bg img").attr("src","/Public/image/bg/background" + randId + ".png");
+    $("#hp_bg img").attr("src","/Public/image/bg/background" + randId + ".jpg");
 
     //下一张背景图
     $("#next_bg").click(function() {

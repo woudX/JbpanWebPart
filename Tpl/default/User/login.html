@@ -8,17 +8,34 @@
             <p>专业的二次元导航中心</p>
         </div>
         <div id="wnd_input">
-            <form id="user_input" action="__APP__/auth/login" method="post">
+            <form id="user_input" action="__APP__/auth/login" method="post" name="logform">
                 <ul>
-                    <li id="user_account"><input type="text" name="username" /><span><a href="__APP__/User/register">新用户注册</a></span></li>
-                    <li id="user_password"><input type="password" name="password" /><span><a href="#">忘记密码</a></span></li>
+                    <li id="user_account"><input type="text" name="username" onkeydown="KeyDown();"/></li>
+                    <li id="user_password"><input type="password" name="password" onkeydown="KeyDown();"  /></li>
                 </ul>
-                <div  ><input name="submit" type="submit" value="登录"  id="login_btn">
-                    <p></p></div>
+                <div>
+                    <input name="submit" type="submit" value="登录"  id="login_btn" name="btnsubmit">
+                </div>
+                <ul id="wnd_select">
+                    <li><span><a href="__APP__/User/register">新用户注册</a></span></li>
+                    <li><span><a href="#">忘记密码</a></span></li>
+                </ul>
+
             </form>
         </div>
         <div id="login_egg">
             <img src="__PUBLIC__/image/icon/egg.png" />
         </div>
     </div>
+
+    <script>
+        function KeyDown()
+        {
+            if (event.keyCode == 13) {
+                event.returnValue = false;
+                event.cancel = false;
+                logform.btnsubmit.click();
+            }
+        }
+    </script>
 </div>

@@ -36,7 +36,12 @@
 
     <div id="reg_box">
         <div id="reg_area">
-            <include file="User:register_01" />
+        <if condition=" $re eq 1">
+        <include file="User:register_03" />
+           <else />
+                    <include file="User:register_01" />
+        </if>
+
         </div>
     </div>
 

@@ -25,8 +25,8 @@ class AuthAction extends DkAction
 	public function index(){
 		Session::set(C('SESSION_USER_KEY'), 37);
 		Import("@.Common.PremAccess");
-		var_dump(PremAccess::access("pub_disk"));
-		print_r($_SESSION);
+	/*	var_dump(PremAccess::access("pub_disk"));
+		print_r($_SESSION);*/
 
 	}
 	
@@ -53,7 +53,7 @@ class AuthAction extends DkAction
     			$dkUserModel->login($uid,$userData);
     			
     			$dkUserModel = D("DkUser");
-				header("Location:http://".C('SITE_URL'));
+				header("Location:http://".C('SITE_URL')."/User/inform?inform=1");
     		}
     		else {
     			$this->error($this->loginErr[$loginResult[0]]);
@@ -78,6 +78,7 @@ class AuthAction extends DkAction
 	
 	//邮箱注册结果
 	function register2(){
+		Import("@.Common.MailRemind");
 		if(!isset($_POST['email']))return;
 		$email = htmlspecialchars(trim($_POST['email']));
 		
@@ -88,8 +89,15 @@ class AuthAction extends DkAction
 
 		$mailActiveModel = D('MailActive');
 
-		echo "已发送邮件<br/>";
-		echo 'http://'.C('SITE_URL').__URL__.'/register3/email/'.urlencode($email).'/encrycode/'.$mailActiveModel->createCode($email);
+	/*	echo "已发送邮件<br/>";*/
+		$url= 'http://'.C('SITE_URL').__URL__.'/register3/email/'.urlencode($email).'/encrycode/'.$mailActiveModel->createCode($email);
+	
+	
+	if( MailRemind::send_Email("注册链接","$url","$email")==TRUE){
+		$this->assign(muban,'2');
+		$this->display("User:inform");
+	}
+
 	}
 	
 	//注册信息填写页面
@@ -106,10 +114,10 @@ class AuthAction extends DkAction
 		if(!$mailActiveModel->checkCode($email,$encrycode)){
 			$this->error("该地址已失效，请重新申请！");
 		}
-		
+		$this->assign(re,"1");
 		$this->assign("email",$email);
 		$this->assign("encryCode",$encrycode);
-		$this->display();
+		$this->display("User:register");
 	}
 	
 	//最终注册结果
@@ -136,9 +144,8 @@ class AuthAction extends DkAction
 			$userModel = D('DkUser');
 			$userModel->register($registerId,$username,$email);
 			$userModel->joinToGroup($registerId,1);
-			
-			echo "注册成功";
 			$mailActiveModel->removeCode($email);
+				header("Location:http://".C('SITE_URL')."/User/inform?inform=3");
 		}
 		else {
 			$this->error($this->registerErr[$registerId]);
@@ -168,6 +175,9 @@ class AuthAction extends DkAction
 			echo '修改成功，请用新密码重新登录';
 
 		}
+		
+		
 }
+
 }
 ?>

@@ -10,15 +10,15 @@
 require_once('./Lib/Common/DiskModelFactory.class.php');
 
 class DiskSubmitAction extends DkAction {
+	
 	private $cookieLife = 2592000;
 	
 		
 	function index(){
 		$this->checkLogin();
 		
-		$this->display('Index:post');
+		$this->display();
 	}
-	
 
     //PHP验证邮箱格式的函数
     private function valid_email($email) {
@@ -248,6 +248,30 @@ class DiskSubmitAction extends DkAction {
 		else {
 			$this->error(L('ArchivesNotExist'));
 		}
+	}
+	
+	function delete() {
+		$extractCode = isset($_REQUEST['code']) ? trim($_REQUEST['code']) : "";
+		if(!preg_match('/^'.C('CODE_PREFIX').'\d+$/i',$extractCode)){
+			return;
+		}
+		
+		//剔除前缀，得到ID
+		$archivesId = substr($extractCode,strlen(C('CODE_PREFIX')));
+		
+		$uid=$_SESSION['uid'];
+
+		$archives=M('archives');
+		$date=$archives->where("id=$archivesId ")->find();
+		if ($uid==$date['uid']) {
+			$archives->where("id=$archivesId ")->delete();
+						header("Location:http://".C('SITE_URL')."/User/usercenter");
+// 					$url="http://".C('SITE_URL')."/User/skydriver_info_02";
+// 			echo '<script type="text/javascript">top.location.href="'.$url.'";</script>';
+		}else{
+			echo "删除失败";
+		}
+		
 	}
 }
 

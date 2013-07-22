@@ -83,3 +83,13 @@ body,html{
 .type_music { color: #00E600 !important;}
 .type_picture { color: #FF6699 !important;}
 .type_other { color: #6666CC !important; }
+
+.orange { color: #f60;}
+
+.underline {
+    text-decoration: underline;
+}
+
+.b {
+    font-weight: bold;
+}

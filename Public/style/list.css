@@ -7,7 +7,6 @@
 }
 section{
 	width: 100%;
-	height: calc(100% - 80px);
 }
 #list_content{
 	width: 70%;
@@ -50,7 +49,6 @@ background:#d9edf7;
 	float: left;
 }
 .list_filename{
-	width: calc(100% - 355px);
 	float: left;
 	border-right: 5px solid #776a6a;
 }
@@ -72,7 +70,6 @@ background:#d9edf7;
 	
 }
 #pages{
-	margin-left:200px;
 	float: left;
 	margin-top: 10px;
 }

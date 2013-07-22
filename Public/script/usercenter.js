@@ -9,12 +9,12 @@ $(document).ready(function() {
         if (ifopen == 'true') {
             ifopen = 'false';
             $('#' + listname + '_list').fadeOut(0);
-            $('#' + listname +  ' img').attr('src', '/PUBLIC/image/icon/add.png');
+            $('#' + listname +  ' img').attr('src', '/Public/image/icon/add.png');
         }
         else {
             ifopen = 'true';
             $('#' + listname + '_list').fadeIn(0);
-            $('#' + listname +  ' img').attr('src', '/PUBLIC/image/icon/minus.png');
+            $('#' + listname +  ' img').attr('src', '/Public/image/icon/minus.png');
         }
 
         $(this).attr('ifopen', ifopen);
