@@ -17,7 +17,7 @@ class DiskSubmitAction extends DkAction {
 	function index(){
 		$this->checkLogin();
 		
-		$this->display();
+		$this->display("Index:post");
 	}
 
     //PHP验证邮箱格式的函数
@@ -92,9 +92,9 @@ class DiskSubmitAction extends DkAction {
 			return;
 		}
 
-		var_dump($this->loginData);
+
 		$archivesData['uid'] = $this->loginData['uid'];	
-		
+		$archivesData['email']=$this->loginData['email'];
 		$archivesData['diskurl'] = $diskUrl;
 		$archivesData['name'] = htmlspecialchars(trim($_POST['name']));
 		$archivesData['diskname'] = $diskName;
@@ -118,7 +118,8 @@ class DiskSubmitAction extends DkAction {
 			
 			if($archivesMode->add()){
 				$this->assign('extractCode',C('CODE_PREFIX').$archivesMode->getLastInsID());
-				$this->display('submitok');
+				$this->assign(muban,5);
+				$this->display('User:inform');
 			}
 			else{
 				echo $archivesMode->getDbError();
@@ -170,7 +171,9 @@ class DiskSubmitAction extends DkAction {
 			$this->display();
 		}
 		else {
-			$this->error(L('ArchivesNotExist'));
+			//$this->error(L('ArchivesNotExist'));
+			$this->assign(muban,6);
+			$this->display("User:inform");
 		}
 	}
 	

@@ -1,5 +1,5 @@
 <?php
-class UserAction extends DKAction
+class UserAction extends DkAction
 {
     public function login()
     {
@@ -86,8 +86,7 @@ class UserAction extends DKAction
 
 		$content=$_POST['content'];
 		
-		
-		var_dump(uc_pm_send($uid,$reciever,$title,$content));
+
 	
 		}
 		function email_info_01List() {
@@ -139,13 +138,12 @@ class UserAction extends DKAction
 			/*var_dump(uc_pm_send(9,10, "ssssss", "dsfsfsdf"));
 			$touid=uc_get_user($_GET['touid']);
 			$userchatlist=uc_pm_view($_SESSION['uid'],0,$_GET['touid']);
-			var_dump($userchatlist);
+	
 			$touid=array();
 			foreach (	$userchatlist as $a){
 				array_push($touid,$a['pmid']);
 			}
-			var_dump($touid);
-	var_dump(uc_pm_delete($uid,"inbox", $touid));
+
 	
 	uc_pm_delete($uid,"outbox", $touid);
 			//  var_dump($userchatlist);

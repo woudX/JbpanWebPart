@@ -7,18 +7,12 @@
     <!-- StyleSheet -->
     <link rel="stylesheet" href="__PUBLIC__/style/index.css" />
 
-    <!-- Script -->
-    <script type="text/javascript" src="__PUBLIC__/script/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/script/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/script/hp_index.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/script/header.js"></script>
-
 </head>
 <body>
 
     <!-- 背景图片 -->
     <div id="hp_bg">
-        <img id="hp_bg_img" src="__PUBLIC__/image/bg/background1.jpg" />
+        <img id="hp_bg_img" src="" onload="displayBG();" />
         <div id="hp_bl"></div>
     </div>
 
@@ -33,17 +27,47 @@
             <include file="Public:searchbar"/>
         </div>
 
+
+
         <!-- 页面头部 -->
         <include file="Index:header"/>
 
         <!-- 页面下侧 -->
         <include file="Index:footer"/>
 
+        <!-- 背景切换按钮 -->
+        <div class="index_left btn_area" id="prev_bg">
+            <img src="__PUBLIC__/image/icon/arrowleft_96_96.png" />
+        </div>
+
+        <div class="index_right btn_area" id="next_bg">
+            <img src="__PUBLIC__/image/icon/arrowright_96_96.png" />
+        </div>
+
    	    <!-- 用户登录页面 -->
         <include file="User:login"/>
-
-
-
     </div>
+
+    <!-- Script -->
+    <script type="text/javascript" src="__PUBLIC__/script/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/script/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/script/hp_index.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/script/header.js"></script>
+
+    <script type="text/javascript">
+
+        // 主页公告自动打开，3秒钟后关闭
+        $(document).ready(function() {
+            var timeCount = setInterval(disappear, 3000);
+
+            function disappear() {
+                $("#flow_scpt1").fadeOut(600);
+                clearTimeout(timeCount);
+            }
+
+            $("#flow_scpt1").fadeIn(600);
+
+        })
+    </script>
 </body>
 </html>

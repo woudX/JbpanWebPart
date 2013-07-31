@@ -1,0 +1,25 @@
+<div id="info_area">
+    <div id="reg_title">
+        <div id="title_big">IP地址修复</div>
+        <div id="title_small"><span>JBPan可能搞错了您的位置，请协助我们进行网络位置修正</span></div>
+    </div>
+    <form id="submit_fix_ip" action="__URL__/submit"  method="get">
+        <div id="submit_ip" class="fi float-clear">
+     
+            <label>IP地址：</label>
+                <span class="textbox">
+                    <input class="input_textbox"  type="text" name="p" maxlength="15"/>
+                </span>
+            <div class="msg">
+                <span class="notice-info hide">
+                   真实  IP地址请前往 ip138.com  查询
+                </span>
+            </div>
+        </div>
+
+        <input type="submit" name="submit" id="btn_submit" value="修正" />
+    </form>
+
+    <!-- 特效控制脚本等 -->
+    <script type="text/javascript" src="__PUBLIC__/script/register.js"></script>
+</div>

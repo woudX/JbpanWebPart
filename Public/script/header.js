@@ -93,6 +93,7 @@ $(document).ready(function() {
     /* 更改选项 */
     $("#type_list li").click(function() {
         $("#type_list_selected").html(this.textContent);
+        $("#type_list_selected").removeClass().addClass($(this).attr("color"));
         $("#srh_type").attr("value",$(this).attr("type"));
         $("#type_list").fadeOut(10);
         showFlag = false;
@@ -127,7 +128,3 @@ $(document).ready(function() {
     })
 })
 
-/* 登录界面 */
-$(document).ready(function() {
-
-})

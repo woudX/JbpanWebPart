@@ -150,12 +150,6 @@ class BaseDiskArchivesModel extends Model implements iBaseDiskArchives {
 		$where['id'] = $id;
 		$file = $this->where($where)->delete();
 	}
-	function ChangeArchivesPoint($point,$id) {
-		$where['id']=$id;
-		$Archives=$this->where($where)->select();
-		$Archives['archives']=$Archives['archives']+$point;
-		$this->where($where)->save($Archives);
-	}
 	
 }
 

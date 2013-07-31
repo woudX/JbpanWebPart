@@ -3,7 +3,8 @@
 class IpAmendAction extends DkAction {
 
 	function index(){		
-		$this->display();
+		$this->assign(re,9);
+		$this->display("User:register");
 	}
 	
 	function submit(){
@@ -19,7 +20,7 @@ class IpAmendAction extends DkAction {
 		
 		$_COOKIE['IpAmend'] = $ip;
 		
-		setcookie('IpAmend',$_COOKIE['IpAmend'], time()+7200 , "/",C('SITE_URL'));
+		setcookie('IpAmend',$_COOKIE['IpAmend'], time()+7200 , "/");
 
 		$this->display();
 		

@@ -37,6 +37,7 @@ html, body , #container{
 #hp_bg img {
     width: 0px;
     height: 0px;
+    display: none;
 }
 
 #hp_bl {
@@ -48,3 +49,44 @@ html, body , #container{
     background: rgba(0,0,0,0);
 }
 
+.index_left {
+    position: absolute;
+    top: 32px;
+    bottom: 32px;
+    left: 0px;
+}
+
+.index_right {
+    position: absolute;
+    top: 35px;
+    bottom: 35px;
+    right: 0px;
+}
+
+.btn_area {
+    width: 100px;
+}
+
+.btn_area img {
+    position: absolute;
+    opacity: 0.3;
+    top:43%;
+}
+
+.index_left:hover {
+    cursor: pointer;
+    background:-moz-linear-gradient(-90deg, rgba(0,0,0,0.0),rgba(0,0,0,0.3));
+    background:-webkit-gradient(linear,left ,right ,from(rgba(0,0,0,0)),to(rgba(0,0,0,0.3)));
+    background:-webkit-linear-gradient(-180deg, rgba(0,0,0,0),rgba(0,0,0,0.3));
+    background:-ms-linear-gradient(-90deg, rgba(0,0,0,0),rgba(0,0,0,0.3));
+    background:linear-gradient(-90deg, rgba(0,0,0,0),rgba(0,0,0,0.3));
+}
+
+.index_right:hover {
+    cursor: pointer;
+    background:-moz-linear-gradient(90deg, rgba(0,0,0,0.0),rgba(0,0,0,0.3));
+    background:-webkit-gradient(linear,right ,left ,from(rgba(0,0,0,0)),to(rgba(0,0,0,0.3)));
+    background:-webkit-linear-gradient(0deg, rgba(0,0,0,0),rgba(0,0,0,0.3));
+    background:-ms-linear-gradient(90deg, rgba(0,0,0,0),rgba(0,0,0,0.3));
+    background:linear-gradient(90deg, rgba(0,0,0,0),rgba(0,0,0,0.3));
+}

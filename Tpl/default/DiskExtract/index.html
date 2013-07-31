@@ -84,6 +84,14 @@
 
     </style>
     <script type="text/javascript">
+        // calc在计算文件名DIV的宽度
+        $(function() {
+            var width = $(".list_filename").parent().width() - 412;
+      
+            $(".list_filename").css("width", width + "px")
+        })
+    </script>
+    <script type="text/javascript">
     $(function(){
          var width;
          var height;
@@ -111,7 +119,7 @@
                 if($(this).height()==50){  //判断进行了宽度修改还是高度修改
                     $(this).animate({width:+width+'px'}, 500,'linear',function(){
                         $(this).removeClass("left");
-                        $(this).removeAttr("style");
+                        //$(this).removeAttr("style");
                         $(this).parent().removeAttr("style");
                 });
                 }
@@ -119,7 +127,7 @@
                     $(this).parent().animate({height:+height+'px'}, 500,'linear');
                     $(this).animate({height:+height+'px'}, 500,'linear',function(){
                         $(this).removeClass("left");
-                        $(this).removeAttr("style");
+                        //$(this).removeAttr("style");
                         $(this).parent().removeAttr("style");
                 });
                 }
@@ -139,7 +147,8 @@
                             <div class="list_extract"><span  class="list_text" title="提取码">提取码</span></div>
                             <div class="list_filename"><a   href="javascript:void(0)" class="list_text" title="文件名">文件名</a></div>
                             <div class="list_netdisk"><span  class="list_text" title="网盘">网盘</span></div>
-                            <div class="list_downloads"><span  class="list_text" title="下载次数">下载次数</span></div>
+                            <!-- <div class="list_downloads"><span  class="list_text" title="下载次数">下载次数</span></div> -->
+                           <div class="list_downloads"><span  class="list_text" title="资源评价">得分:{$archives.archivespoint}</span></div>
                             <div class="clear"></div>
                         </div>
                     </li>
@@ -149,7 +158,15 @@
                             <div class="list_extract"><span  class="list_text" title="提取码">{$extractCode}</span></div>
                             <div class="list_filename"><a   href="#download_dialog" rel="leanModal" class="list_text" title="文件名"> {$archives.name}</a></div>
                             <div class="list_netdisk"><span  class="list_text" title="网盘">{$archives.diskname}</span></div>
-                            <div class="list_downloads"><span  class="list_text" title="下载次数">{$archives.downloads}</span></div>
+                            <!-- <div class="list_downloads"><span  class="list_text" title="下载次数">{$archives.downloads}</span></div> -->
+                            <div class="list_downloads">
+                          <span  class="list_text" title="资源评价">
+                                    <a class="pink" title="赞一个" href="/Disk_Extract/index/searchInfo/{$extractCode}/fq/3">赞</a>
+                                    <span class="pipe">|</span>
+                                    <a class="orange" title="这东西太坑爹了= =" href="/Disk_Extract/index/searchInfo/{$extractCode}/fq/1">坑</a>
+                                  
+                                </span>
+                            </div>
                             <div class="clear"></div>
                         </div>
                     </li>
@@ -169,7 +186,7 @@
     </div>
 
 
-    <a href="__APP__/CheckcodeDeal/index/code/{$extractCode}" id="check_link" target="_blank"
+    <a href="__APP__/Check_code_Deal/index/code/{$extractCode}" id="check_link" target="_blank"
        style="display: none;">验证操作</a>
 
     <div id="lean_overlay"></div>
@@ -228,7 +245,7 @@
                                     $('#check_link')[0].click();
                                 }
                                 else if (response.code == -1){
-                                    $.get('__APP__/LostEfficacyRemind/index/code/{$extractCode}');
+                                    $.get('__APP__/Lost_Efficacy_Remind/index/code/{$extractCode}');
                                     $('#lean_overlay')[0].click();
                                     alert(response.message);
 

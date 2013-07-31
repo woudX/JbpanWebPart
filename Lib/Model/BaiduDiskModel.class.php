@@ -42,11 +42,7 @@ class BaiduDiskModel extends BaseDiskArchivesModel {
 	function checkLostEfficacy($param){
 		$file = $this->getHttpContents($param['url']);
 
-		/*
-		var_dump(strpos($file, '链接不存在'));
-		var_dump(strpos($file, '文件已删除'));
-		var_dump(strpos($file, $error1));
-		*/
+
 		
 		if(strpos($file, '链接不存在') || strpos($file, '文件已删除')|| strpos($file,">&nbsp;<b class=")){
 			return true;

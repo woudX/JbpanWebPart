@@ -1,6 +1,5 @@
 <?php
 class UserAction extends DkAction {
- 
 	public function login() {
 		$this->display ();
 	}
@@ -11,7 +10,7 @@ class UserAction extends DkAction {
 		$uid = $_SESSION ['uid'];
 		$this->checkLogin ();
 		
-		$avatar_big = "http://".C('SITE_URL' )."/ucenter/avatar.php?uid=$uid&size=big";
+		$avatar_big = "http://" . C ( 'SITE_URL' ) . "/ucenter/avatar.php?uid=$uid&size=big";
 		$this->assign ( avatar_big, $avatar_big );
 		$this->display ();
 	}
@@ -34,15 +33,14 @@ class UserAction extends DkAction {
 	function personal_info_02() {
 		$uid = $_SESSION ['uid'];
 		
-		$avatar_middle = "http://".C('SITE_URL' )."/ucenter/avatar.php?uid=$uid&size=middle";
+		$avatar_middle = "http://" . C ( 'SITE_URL' ) . "/ucenter/avatar.php?uid=$uid&size=middle";
 		$this->assign ( avatar_middle, $avatar_middle );
 		$html = uc_avatar ( $_SESSION ['uid'] );
-	
+		
 		$this->assign ( html, $html );
-	
+		
 		$this->display ();
 	}
-
 	function email_info_01() {
 		// echo $uid=$_SESSION['uid'];
 		// var_dump(uc_pm_send(10, 9, "22222d2222s22222 22222s" , "sad112we"));
@@ -57,14 +55,14 @@ class UserAction extends DkAction {
 		$this->assign ( newpm, $newpm );
 		
 		$this->assign ( maildateList, $maildateList );
-		$avatar_big = "http://".C('SITE_URL' )."/ucenter/avatar.php?uid=$uid&size=big";
+		$avatar_big = "http://" . C ( 'SITE_URL' ) . "/ucenter/avatar.php?uid=$uid&size=big";
 		
 		$this->assign ( avatar_big, $avatar_big );
 		$this->display ();
 	}
 	function email_info_02() {
 		$uid = $_SESSION ['uid'];
-		$avatar_big = "http://".C('SITE_URL' )."/ucenter/avatar.php?uid=$uid&size=big";
+		$avatar_big = "http://" . C ( 'SITE_URL' ) . "/ucenter/avatar.php?uid=$uid&size=big";
 		$this->assign ( avatar_big, $avatar_big );
 		
 		$this->display ();
@@ -99,7 +97,7 @@ class UserAction extends DkAction {
 			array_push ( $userchatlist, $userchat );
 		}
 		$msgfrom = uc_get_user ( $_GET ['touid'], 1 );
-		$avatar_big = "http://".C('SITE_URL' )."/ucenter/avatar.php?uid=$uid&size=big";
+		$avatar_big = "http://" . C ( 'SITE_URL' ) . "/ucenter/avatar.php?uid=$uid&size=big";
 		$this->assign ( avatar_big, $avatar_big );
 		$this->assign ( msgfrom, $msgfrom [1] );
 		$this->assign ( userchatlist, $userchatlist );
@@ -127,7 +125,7 @@ class UserAction extends DkAction {
 			array_push ( $touid, $a ['msgtoid'] );
 		}
 		uc_pm_deleteuser ( $uid, $touid );
-		header ( "Location:http://" . C('SITE_URL' )/user );
+		header ( "Location:http://" . C ( 'SITE_URL' ) / user );
 		exit ();
 	}
 	function isread() {
@@ -141,7 +139,7 @@ class UserAction extends DkAction {
 		}
 		
 		uc_pm_readstatus ( $uid, $touid );
-		header ( "Location:http://" . C('SITE_URL' ) / user );
+		header ( "Location:http://" . C ( 'SITE_URL' ) / user );
 		exit ();
 	}
 	function skydriver_info_02() {
@@ -149,15 +147,21 @@ class UserAction extends DkAction {
 		$Data = M ( "archives" );
 		import ( 'ORG.Util.Page' ); // 导入分页类
 		$count = $Data->where ( "uid=$uid" )->count (); // 查询满足要求的总记录数
-		$Page = new Page ( $count, 16 ); // 实例化分页类 传入总记录数
-		                                   // 进行分页数据查询 注意page方法的参数的前面部分是当前的页数使用 $_GET[p]获取
+		$Page = new Page ( $count, 14 ); // 实例化分页类 传入总记录数
+		                                 // 进行分页数据查询 注意page方法的参数的前面部分是当前的页数使用 $_GET[p]获取
 		$nowPage = isset ( $_GET ['p'] ) ? $_GET ['p'] : 1;
-		$list = $Data->where ( "uid=$uid" )->order ( 'dateline' )->page ( $nowPage . ',' . $Page->listRows )->select ();
+		$list = $Data->where ( "uid=$uid" )->order ( 'dateline desc' )->page ( $nowPage . ',' . $Page->listRows )->select ();
 		$show = $Page->show (); // 分页显示输出
-		
+		$show = str_replace ( "href=", $replace, $subject );
 		$this->assign ( 'page', $show ); // 赋值分页输出
 		$this->assign ( 'archiveslist', $list ); // 赋值数据集
-		                                     
+		
+		$this->assign ( 'nowPage', $Page->nowPage );
+		$this->assign ( 'nowPage_1', $Page->nowPage - 1 );
+		$this->assign ( 'nowPage1', $Page->nowPage + 1 );
+		$this->assign ( 'rollPage', $Page->rollPage );
+		$this->assign ( 'totalRows', $Page->totalRows );
+		$this->assign ( 'totalPages', $Page->totalPages );
 		// $archiveslist=$archives->where("uid=$uid")->select();
 		
 		$this->assign ( 'codePrefix', C ( 'CODE_PREFIX' ) );
@@ -189,10 +193,42 @@ class UserAction extends DkAction {
 		$user ['sex'] = $_POST ['sex'];
 		
 		if ($userdate->where ( "uid=$uid" )->save ( $user )) {
-			header ( "Location:http://" . C('SITE_URL' ) . "/User/usercenter" );
+			header ( "Location:http://" . C ( 'SITE_URL' ) . "/User/usercenter" );
 		} else {
 			echo "修改失败";
 		}
+	}
+	function getold() {
+		
+		header("Content-type: text/html; charset=utf-8");	
+		$this->checkLogin ();
+		if (isset ( $_POST ['submit'] )) {
+			$uid = $this->loginData ['uid'];
+			
+			$email = htmlspecialchars ( trim ( $_POST ['email'] ) );
+			
+			$password = htmlspecialchars ( trim ( $_POST ['password'] ) );
+			if ($email && $password) {
+				$archivesModel = M ( 'Archives' );
+				
+				$count = $archivesModel->where ( array (
+						'email' => $email,
+						'password' => $password,
+						'uid' => "" 
+				) )->save ( array (
+						'uid' => $uid 
+				) );
+				$count = $count ? $count : 0;
+				echo "已获取" . $count . "条数据，请到用户中心查看！";
+			}
+		} else {
+			$this->display ();
+		}
+	}
+	protected function checkLogin() {
+		if (! $this->isLogin)
+			
+			header ( 'Location: http://' . C ( 'SITE_URL' ) . '/User/inform' );
 	}
 }
 ?>

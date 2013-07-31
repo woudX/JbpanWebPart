@@ -35,10 +35,26 @@
                         </ul>
                     </if>
                 </div>
-                <a id="user_setting_btn" class="icon_1 img_setn"  href="__APP__/User/usercenter"></a>
+                <a id="user_setting_btn" class="icon_1 img_setn" title="个人账户设置" href="__APP__/User/usercenter"></a>
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+
+        // 主页公告自动打开，3秒钟后关闭
+        $(document).ready(function() {
+            var timeCount = setInterval(disappear, 3000);
+
+            function disappear() {
+                $("#flow_scpt1").fadeOut(600);
+                clearTimeout(timeCount);
+            }
+
+            $("#flow_scpt1").fadeIn(600);
+
+        })
+    </script>
 </header>
 
 

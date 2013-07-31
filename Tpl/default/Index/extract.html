@@ -83,6 +83,7 @@
         }
 
     </style>
+
     <script type="text/javascript">
     $(function(){
          var width;
@@ -127,10 +128,13 @@
     });
     </script>
 </head>
-<body> 
+<body>
+
+    <!-- 页面头部 -->
+    <include file="Public:globalheader"/>
+
     <div id="container">
-                <!-- 页面头部 -->
-         <include file="Public:globalheader"/>
+
         <section>
             <div id="list_content">
                 <ul>
@@ -160,14 +164,13 @@
                 {$archives.remark}
             </div>
         </section>
-
-        <!-- 页面下侧 -->
-         <include file="Public:globalfooter"/>
-
-        <!-- 用户登录页面 -->
-        <include file="User:login"/>
     </div>
 
+    <!-- 页面下侧 -->
+    <include file="Public:globalfooter"/>
+
+    <!-- 用户登录页面 -->
+    <include file="User:login"/>
 
     <a href="__APP__/CheckcodeDeal/index/code/{$extractCode}" id="check_link" target="_blank"
        style="display: none;">验证操作</a>

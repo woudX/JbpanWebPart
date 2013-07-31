@@ -1,68 +1,174 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>搜索结果-菊爆盘</title>
-    <link href="__PUBLIC__/style/common.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>搜索结果-列表页</title>
+    <link rel="stylesheet" href="__PUBLIC__/style/list.css" />
+        <!-- Script -->
     <script type="text/javascript" src="__PUBLIC__/script/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/script/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/script/header.js"></script>
+
+    <script type="text/javascript">
+
+
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+
+
+
+    $(function(){
+         var width;
+         var height;
+        var nowPage = getQueryString("page");
+
+        if (nowPage == null)
+            nowPage = 1;
+        else
+            nowPage = parseInt(nowPage);
+
+        $(".list_filename").mouseenter(function(){
+            var textWidth=$(this).children('a').innerWidth(); //获取文本的宽度
+             //记录DIV原有的高度和宽度
+             width=$(this).width();
+             height=$(this).height();
+            if(textWidth>$(this).width()){
+                $(this).addClass("left");
+                var maxWidth=$("#list_content").width()-138; //计算DIV的最大宽度
+                if(textWidth<maxWidth){
+                    $(this).animate({width:+textWidth+'px'}, 500,'linear');
+                }
+                else{
+                    //如果文字过长就只能通过修改DIV的高度来显示了
+                     var textHeight=$(this).children('a').innerHeight()+30;
+                     $(this).animate({height:+textHeight+'px'}, 500,'linear');
+                     $(this).parent().animate({height:+textHeight+'px'}, 500,'linear');
+                     //必须修改父DIV的高度才能修改子DIV的高度
+                }
+            }
+        });
+        $(".list_filename").mouseleave(function(){
+                if($(this).height()==50){  //判断进行了宽度修改还是高度修改
+                    $(this).animate({width:+width+'px'}, 500,'linear',function(){
+                        $(this).removeClass("left");
+                        $(this).removeAttr("style");
+                        $(this).parent().removeAttr("style");
+                        $(".list_filename").width($("#list_content").width()-360+'px');
+                });
+                }
+                else{
+                    $(this).parent().animate({height:+height+'px'}, 500,'linear');
+                    $(this).animate({height:+height+'px'}, 500,'linear',function(){
+                        $(this).removeClass("left");
+                        $(this).removeAttr("style");
+                        $(this).parent().removeAttr("style");
+                        $(".list_filename").width($("#list_content").width()-360+'px');
+                });
+                }
+        });
+        $("#page_up").click(function(){
+            if(nowPage>=2){
+                nowPage--;
+                location.href="http://"+location.hostname+"/Search?page="+ nowPage + "&key=" + $("#list_content").attr("key");
+            }else{
+                nowPage = 1;
+                location.href="http://"+location.hostname+"/Search?page=1" + "&key=" + $("#list_content").attr("key");
+            }
+        });
+        $("#page_down").click(function(){
+            nowPage++;
+            location.href="http://"+location.hostname+"/Search?page=" + nowPage + "&key=" + $("#list_content").attr("key");
+        });
+        
+         $( document ).ready(function(){
+
+            window.onresize = function(){
+                change_size();
+            }
+            window.onload = function() {
+                change_size();
+            }
+            function change_size(){
+                $("section").height($("body").height()-80+'px');
+                $(".list_filename").width($("#list_content").width()-360+'px');
+                $("#pages").css("margin-left", ($(".list_info").width()-264)/2-116+'px');
+            }
+            var page = nowPage;
+            var length=page+5;
+            for(var i=page-5;i<length;i++){
+              if(i>0){
+                var a=$('<a href="javascript:void(0)"><span class="page_O"></span><span class="list_number">'+i+'</span>'); 
+                $("#pages").append(a);
+              }
+              else{
+                length++;
+              }
+            $(".list_number").click(function(){
+            var page=$(this).text();
+            location.href="http://"+location.hostname+"/Search?page="+page + "&key=" + $("#list_content").attr("key");;
+        });
+            }
+             $(".list_number").each(function(key,value){
+                if($(value).text()==page){
+                    $(value).addClass("now");
+                }
+             });
+        });
+    });
+    </script>
 </head>
-<body>
-<div id="box">
-    <include file="Public:senhead"/>
+<body> 
+    <div id="container">
+                <!-- 页面头部 -->
+         <include file="Public:globalheader"/>
 
-    <div style="width: 900px; text-align: center; margin: 50px auto;">
-        <form id="search_from">
-            <input type="hidden" value="{$page}" name="page">
-            关键字：<input type="text" name="key" value="{$key}" style="width: 300px;">
-            <input type="submit" value="提交">
-        </form>
+        <section>
+            <div id="list_content" key={$key}>
+                <ul>
+                    <li class="li_list">
+                        <div class="list_info">
+                            <div class="list_extract"><span  class="list_text" title="提取码">提取码</span></div>
+                            <div class="list_filename">文件名</div>
+                            <div class="list_netdisk"><span  class="list_text" title="网盘">网盘</span></div>
+                            <div class="list_downloads"><span  class="list_text" title="下载次数">下载次数</span></div>
+                            <div class="clear"></div>
+                        </div>
+                    </li>
+                 <foreach name="archivesList" item="archives" >
+                    <li class="li_list">
+                        <div class="list_info">
+                            <div class="list_extract"><span  class="list_text" title="{$codePrefix}{$archives.id}">{$codePrefix}{$archives.id}</span></div>
+                            <div class="list_filename"><a   href="__APP__/Disk_Extract/index/searchInfo/{$codePrefix}{$archives.id}" class="list_text" title="{$archives.name}">{$archives.name}</a></div>
+                            <div class="list_netdisk"><span  class="list_text" title="{$archives.diskname}">{$archives.diskname}</span></div>
+                            <div class="list_downloads"><span  class="list_text" title="{$archives.downloads}">{$archives.downloads}</span></div>
+                            <div class="clear"></div>
+                        </div>
+                    </li>
+                 </foreach>
+                </ul>
+            </div>
+            <div id="list_page">
+                <div id="page_up"><a class="img_arrowleft" href="javascript: void(0)"></a></div>
+                <input id="nextPage" value="{$show.nextPage}" type="hidden">
+                <div id="pages">
+                    <a href="javascript:void(0)">
+                    <span class="page_Y"></span>
+                    <span class="list_number">&nbsp;</span>
+                    </a>
+                </div>
+                <div id="page_down"><a class="img_arrowright" href="javascript: void(0)"></a></div>
+                <div class="clear"></div>
+            </div>
+        </section>
+
+        <!-- 页面下侧 -->
+         <include file="Public:globalfooter"/>
+
+        <!-- 用户登录页面 -->
+        <include file="User:login"/>
     </div>
-
-    <table width="720" border="1" align="center" cellspacing="2" style="margin-top: 50px; margin-bottom: 50px;">
-        <tr>
-            <td>提取码</td>
-            <td>文件名</td>
-            <td>网盘</td>
-            <td>查看</td>
-        </tr>
-        <foreach name="archivesList" item="archives" >
-        <tr>
-                <td>{$codePrefix}{$archives.id}</td>
-                <td>{$archives.name}</td>
-                <td>{$archives.diskname}</td>
-                <td><a href="__APP__/DiskExtract/index/code/{$codePrefix}{$archives.id}">点我查看</a></td>
-        </tr>
-        </foreach>
-    </table>
-    <div style="width: 900px; text-align: center; margin: 20px auto;">
-        <if condition="$page gt 1"><a href="#" id="prev">上一页</a>  </if>
-        <a href="#" id="next">下一页</a>
-        当前第（{$page}）页
-    </div>
-
-    <include file="Public:footer"/>
-</div>
-
-<a href="__APP__/CheckcodeDeal/index/code/{$extractCode}" id="check_link" target="_blank"  style="display: none;">验证操作</a>
-<div id="lean_overlay"></div>
-<div id="download_dialog">
-    <h3>下载列表</h3>
-    <div class="loading"><img src="__PUBLIC__/image/loading.gif" style=""/></div>
-    <ul>
-    </ul>
-</div>
 </body>
-<script>
-    $('#prev').click(function(){
-        $('#search_from input[name=page]').val(parseInt( $('#search_from input[name=page]').val()) - 1);
-        $('#search_from').submit();
-        return false;
-    });
-
-    $('#next').click(function(){
-        $('#search_from input[name=page]').val(parseInt( $('#search_from input[name=page]').val()) + 1);
-        $('#search_from').submit();
-        return false;
-    });
-</script>
 </html>

@@ -10,8 +10,14 @@
         <div id="wnd_input">
             <form id="user_input" action="__APP__/auth/login" method="post" name="logform">
                 <ul>
-                    <li id="user_account"><input type="text" name="username" onkeydown="KeyDown();"/></li>
-                    <li id="user_password"><input type="password" name="password" onkeydown="KeyDown();"  /></li>
+                    <li id="user_account"><input type="text" class="w_150 h_25" name="username" onkeydown="KeyDown(event);"/></li>
+                    <li id="user_password"><input type="password" class="w_150 h_25"  name="password" onkeydown="KeyDown(event);"  /></li>
+                    <li id="user_autologin">
+                        <span><label for="state_1">永久</label></span>&nbsp;
+                        <input type="radio" id="state_1" class="h_20" name="autologin" value="0" checked="true" />&nbsp;
+                        <span><label for="state_2">只这一次</label></span>&nbsp;
+                        <input type="radio" id="state_2" class="h_20" name="autologin" value="1"  /><br />
+                    </li>
                 </ul>
                 <div>
                     <input name="submit" type="submit" value="登录"  id="login_btn" name="btnsubmit">
@@ -29,12 +35,12 @@
     </div>
 
     <script>
-        function KeyDown()
+        function KeyDown(event)
         {
             if (event.keyCode == 13) {
                 event.returnValue = false;
                 event.cancel = false;
-                logform.btnsubmit.click();
+                $("#user_input").btnsubmit.click();
             }
         }
     </script>

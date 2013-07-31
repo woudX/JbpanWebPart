@@ -77,7 +77,7 @@ class DkUserModel extends Model {
 		echo $uid;
 			$where['uid'] = $uid;
 			$user = $this->where($where)->find();
-			var_dump($user);
+
 			$filepoint=ceil(100*(1-($user['losefile']/($user['allfile']-$user['losefile']))));
 			
 			return $filepoint;

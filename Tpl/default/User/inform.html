@@ -32,6 +32,10 @@
             <include file="User:inform_reg_ok" />
              <elseif condition="$muban eq 4" />
                   <include file="User:inform_reg_ok" />
+                  <elseif condition="$muban eq 5" />
+                  <include file="User:inform_submit_ok" />
+                       <elseif condition="$muban eq 6" />
+                  <include file="User:inform_extract_error" />
         <else />
             <include file="User:inform_error_login" />
         </if>

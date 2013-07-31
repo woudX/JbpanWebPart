@@ -25,8 +25,7 @@ class AuthAction extends DkAction
 	public function index(){
 		Session::set(C('SESSION_USER_KEY'), 37);
 		Import("@.Common.PremAccess");
-	/*	var_dump(PremAccess::access("pub_disk"));
-		print_r($_SESSION);*/
+
 
 	}
 	
@@ -40,8 +39,8 @@ class AuthAction extends DkAction
     {
     	if(isset($_POST['submit'])){
     		$username = htmlspecialchars(trim($_POST['username']));
-    		$password = htmlspecialchars(trim($_POST['password']));
-    		
+    		$password = htmlspecialchars(trim($_POST['password']));    		    	
+    			$isAutoLogin = intval($_POST['autologin']);    		
     		$loginResult = uc_user_login($username, $password);
     		if($loginResult[0] > 0){
     			list($uid, $username, $password, $email) = $loginResult;
@@ -51,7 +50,7 @@ class AuthAction extends DkAction
     			
     			$dkUserModel = D('DkUser');
     			$dkUserModel->login($uid,$userData);
-    			
+    			if($isAutoLogin == 1)D('Autologin')->setAutologin($uid);
     			$dkUserModel = D("DkUser");
 				header("Location:http://".C('SITE_URL')."/User/inform?inform=1");
     		}
@@ -65,9 +64,7 @@ class AuthAction extends DkAction
     }
 
 	public function logout()
-	{
-		$dkUserModel = D('DkUser');
-		$dkUserModel->logout();
+	{		if($this->isLogin){			D('Autologin')->clearAutologin($this->loginData['uid']);						$dkUserModel = D('DkUser');			$dkUserModel->logout();		}
 		header("Location:http://".C('SITE_URL'));;
 	}
 	
@@ -111,6 +108,7 @@ class AuthAction extends DkAction
 		}
 		
 		$mailActiveModel = D('MailActive');
+
 		if(!$mailActiveModel->checkCode($email,$encrycode)){
 			$this->error("该地址已失效，请重新申请！");
 		}

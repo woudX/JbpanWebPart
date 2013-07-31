@@ -4,13 +4,13 @@
 		<input type="text" id="srh_type" name="searchType" value="extract" />
 
 		<div id="srh_sc">
-			<span id="srh_type_area"> <span id="type_list_selected">提取</span>
+			<span id="srh_type_area"> <span id="type_list_selected" class="red">提取</span>
 				<ul id="type_list">
-					<li type="extract">提取</li>
-					<li type="search">搜索</li>
+					<li class="red" color="red" type="extract">提取</li>
+					<li class="blue" color="blue" type="search">搜索</li>
 				</ul> <span id="srh_down" class="icon_1 img_downtraingle"></span>
 			</span> <input type="image" src="__PUBLIC__/image/icon/search.png"
-				id="srh_btn" class="img_search" onclick="$('srh_form').submit();" />
+				id="srh_btn" title="点击搜索" class="img_search" onclick="$('srh_form').submit();" />
 		</div>
 	</form>
 </div>

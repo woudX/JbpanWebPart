@@ -59,6 +59,7 @@ body,html{
 .h_40 { height: 40px; }
 .h_60 {height: 60px; }
 
+.w_20 { width: 20px; }
 .w_40 { width: 40px; }
 .w_80 { width: 80px; }
 .w_100 { width: 100px; }
@@ -84,8 +85,11 @@ body,html{
 .type_picture { color: #FF6699 !important;}
 .type_other { color: #6666CC !important; }
 
-.orange { color: #f60;}
-
+.orange { color: #f60 !important;}
+.red { color: #f00 !important;}
+.pink { color: #FF6699 !important;}
+.white { color: #FFF !important;}
+.blue { color: #3366CC !important;}
 .underline {
     text-decoration: underline;
 }

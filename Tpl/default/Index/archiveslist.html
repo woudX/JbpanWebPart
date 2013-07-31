@@ -22,33 +22,33 @@
                 $(this).addClass("left");
                 var maxWidth=$("#list_content").width()-138; //计算DIV的最大宽度
                 if(textWidth<maxWidth){
-                    $(this).animate({width:+textWidth+'px'}, 500,'linear');
+                    $(this).animate({width:+textWidth+'px'}, 750,'linear');
                 }
                 else{
                     //如果文字过长就只能通过修改DIV的高度来显示了
                      var textHeight=$(this).children('a').innerHeight()+30;
-                     $(this).animate({height:+textHeight+'px'}, 500,'linear');
-                     $(this).parent().animate({height:+textHeight+'px'}, 500,'linear');
+                     $(this).animate({height:+textHeight+'px'}, 750,'linear');
+                     $(this).parent().animate({height:+textHeight+'px'}, 750,'linear');
                      //必须修改父DIV的高度才能修改子DIV的高度
                 }
             }
         });
         $(".list_filename").mouseleave(function(){
                 if($(this).height()==50){  //判断进行了宽度修改还是高度修改
-                    $(this).animate({width:+width+'px'}, 500,'linear',function(){
+                    $(this).animate({width:+width+'px'}, 750,'linear',function(){
                         $(this).removeClass("left");
                         $(this).removeAttr("style");
                         $(this).parent().removeAttr("style");
-                        $(".list_filename").width($("#list_content").width()-355+'px');
+                        $(".list_filename").width($(".list_info").width()-345+'px');
                 });
                 }
                 else{
-                    $(this).parent().animate({height:+height+'px'}, 500,'linear');
-                    $(this).animate({height:+height+'px'}, 500,'linear',function(){
+                    $(this).parent().animate({height:+height+'px'}, 750,'linear');
+                    $(this).animate({height:+height+'px'}, 750,'linear',function(){
                         $(this).removeClass("left");
                         $(this).removeAttr("style");
                         $(this).parent().removeAttr("style");
-                        $(".list_filename").width($("#list_content").width()-355+'px');
+                        $(".list_filename").width($(".list_info").width()-345+'px');
                 });
                 }
         });
@@ -75,7 +75,7 @@
             }
             function change_size(){
                 $("section").height($("body").height()-80+'px');
-                $(".list_filename").width($("#list_content").width()-355+'px');
+                $(".list_filename").width($(".list_info").width()-345+'px');
                 $("#pages").css("margin-left", ($(".list_info").width()-264)/2-116+'px');
             }
             var page=$("#nextPage").val()-1;

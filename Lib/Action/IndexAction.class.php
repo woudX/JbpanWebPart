@@ -4,6 +4,7 @@ class IndexAction extends DkAction
 
     public function index()
     {
+ 
 		$clientIp = BaseDiskArchivesModel::getClientIp();
 		$this->assign('clientIp',$clientIp);
 		$this->assign("isLogin", $this->isLogin);
@@ -26,12 +27,13 @@ class IndexAction extends DkAction
 		$User = M("Archives");
 	
 		import("ORG.Util.Page");
-		$count = $User->where("id>1")->count();
+		$count = $User->count();
 
 		$Page = new Page($count, C('SEARCH_PAGESIZE'));
 		$show = $Page->show();
 		$Page->setConfig('header', '员');
-		$list = $User->where('id>1')->order('dateline desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+		$list = $User->where('id>1')->order('id desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+		// 		$list =  D('BaseDiskArchives')->getList($p);
 		$this->assign('archivesList',$list);
 		$this->assign('codePrefix',C('CODE_PREFIX'));
 

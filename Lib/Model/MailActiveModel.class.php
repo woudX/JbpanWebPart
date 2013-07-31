@@ -2,7 +2,7 @@
 
 class MailActiveModel extends Model {
 	//默认1小时过期
-	static private $DEFAULT_EXPIRE = 3600;
+	static private $DEFAULT_EXPIRE = 7200;
 	
 	function createCode($email, $expire = null){
 		if($expire == null) $expire = self::$DEFAULT_EXPIRE;

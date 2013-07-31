@@ -3,11 +3,15 @@
     <div class="items_title">资源管理</div>
     <div class="pattern menu">
         <div class="menu_left">
-            <span>提取码跳转：</span><input class="input_textbox" type="input" id="code"/>
-            <a href="javascript:void(0)" class="" onclick="changeToURL('__APP__/Disk_Submit/edit/code/' + $('#code').val())">跳转</a>
+            <span>提取码跳转：</span><input class="input_textbox" onkeydown="KeyDown(event);" type="input" id="code"/>
+            <a href="javascript:void(0)" id="btn_jump" class="" onclick="changeToURL('__APP__/Disk_Submit/edit/code/' + $('#code').val())">跳转</a>
         </div>
         <div class="menu_right">
-            {$page}
+             {$totalRows} 条记录 
+         <a href="javascript:void(0)"  onclick="changeToPage('__APP__/User/skydriver_info_02/?&p={$nowPage_1}')">上一页</a>
+         {$nowPage}/{$totalPages} 页  
+         <a href="javascript:void(0)"  onclick="changeToPage('__APP__/User/skydriver_info_02/?&p={$nowPage1}')">下一页</a>   
+        
         </div>
     </div>
     <div class="pattern">
@@ -39,4 +43,13 @@
 
     <!-- 特效控制脚本等 -->
     <script type="text/javascript" src="__PUBLIC__/script/sub_usercenter.js"></script>
+    <script>
+        function KeyDown(event) {
+            if (event.keyCode == 13) {
+                event.returnValue = false;
+                event.cancel = false;
+                changeToURL('__APP__/Disk_Submit/edit/code/' + $('#code').val());
+            }
+        }
+    </script>
 </div>
